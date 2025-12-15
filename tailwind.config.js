@@ -10,6 +10,8 @@ module.exports = {
                 'desert-sand': '#eecfa1',
                 'clay': '#b38b6d',
                 'soft-black': '#1a1a1a',
+                'slate-dark': '#2e3440',
+                'slate-light': '#4c566a',
             },
             fontFamily: {
                 sans: ['Inter', 'sans-serif'],

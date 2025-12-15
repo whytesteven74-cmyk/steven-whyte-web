@@ -2,13 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
 body {
   background: linear-gradient(to bottom, #1a1a1a, #2d2d2d);
   color: #f5f5f5;
+}
+
+/* MDX / Prose Styling */
+article h1, article h2, article h3 {
+  color: #eecfa1; /* desert-sand */
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+article p {
+  margin-bottom: 1rem;
+  line-height: 1.75;
+}
+
+article blockquote {
+  border-left: 4px solid #b38b6d; /* clay */
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #a0a0a0;
+}
+
+article a {
+  color: #eecfa1;
+  text-decoration: underline;
+}
+
+article hr {
+  border-color: #4c566a; /* slate-light */
+  margin: 2rem 0;
 }

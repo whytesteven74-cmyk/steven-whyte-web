@@ -2,11 +2,13 @@ import Link from "next/link";
 
 export default function Home() {
     return (
-        <main className="flex min-h-screen flex-col items-center justify-center p-24 text-center">
-            <h1 className="text-6xl font-serif text-desert-sand mb-4">Steven Whyte</h1>
-            <p className="text-xl max-w-2xl mb-12 text-gray-300">
-                Walking the path of truth, healing, and connection.
-                From the roads of Europe to the silence of the desert.
+        <main className="flex min-h-screen flex-col items-center justify-center p-8 md:p-24 text-center">
+            <h1 className="text-5xl md:text-6xl font-serif text-desert-sand mb-4">Steven Whyte</h1>
+            <p className="text-lg md:text-xl max-w-2xl mb-4 text-gray-300">
+                Mental Health Advocate | Author | Coach
+            </p>
+            <p className="text-base max-w-xl mb-12 text-gray-400 italic">
+                "Breaking the silence around men's mental health, one unspoken truth at a time."
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
