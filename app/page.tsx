@@ -1,10 +1,16 @@
-
 "use client";
 
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
+
+// Dynamically import 3D Scene to avoid SSR issues with Three.js
+const HeroScene = dynamic(() => import("@/components/3d/HeroScene"), {
+    ssr: false,
+    loading: () => <div className="absolute inset-0 z-0 bg-transparent" />
+});
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 40 },
@@ -19,8 +25,11 @@ export default function Home() {
     return (
         <main className="min-h-screen bg-soft-black text-white selection:bg-desert-sand selection:text-black overflow-hidden relative">
 
-            {/* Background Texture / Gradient */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-slate-800/20 via-soft-black to-soft-black pointer-events-none" />
+            {/* 3D Background Layer */}
+            <HeroScene />
+
+            {/* Background Texture / Gradient Overlay */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-slate-800/10 via-soft-black/80 to-soft-black pointer-events-none z-[2]" />
 
             <section className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 pt-20 pb-10">
 
