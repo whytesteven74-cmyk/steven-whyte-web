@@ -9,15 +9,23 @@ module.exports = {
             colors: {
                 'desert-sand': '#eecfa1',
                 'clay': '#b38b6d',
-                'soft-black': '#1a1a1a',
+                'soft-black': '#121212', // Slightly darker for premium feel
                 'slate-dark': '#2e3440',
                 'slate-light': '#4c566a',
+                'glass-black': 'rgba(18, 18, 18, 0.7)',
+                'glass-white': 'rgba(255, 255, 255, 0.05)',
             },
             fontFamily: {
-                sans: ['Inter', 'sans-serif'],
-                serif: ['Merriweather', 'serif'],
+                sans: ['var(--font-inter)', 'sans-serif'],
+                serif: ['var(--font-playfair)', 'serif'],
             },
+            backgroundImage: {
+                'noise': "url('/noise.png')", // Placeholder for texture if needed
+                'sand-gradient': 'linear-gradient(to bottom right, #eecfa1, #b38b6d)',
+            }
         },
     },
-    plugins: [],
+    plugins: [
+        require('@tailwindcss/typography'),
+    ],
 }
