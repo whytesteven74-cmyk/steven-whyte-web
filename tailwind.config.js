@@ -16,8 +16,9 @@ module.exports = {
                 'glass-white': 'rgba(255, 255, 255, 0.05)',
             },
             fontFamily: {
-                sans: ['var(--font-inter)', 'sans-serif'],
-                serif: ['var(--font-playfair)', 'serif'],
+                sans: ['var(--font-geist-sans)', 'sans-serif'],
+                mono: ['var(--font-geist-mono)', 'monospace'],
+                serif: ['var(--font-playfair)', 'serif'], // Keeping Playfair for headers if needed, or removing
             },
             backgroundImage: {
                 'noise': "url('/noise.png')", // Placeholder for texture if needed
