@@ -22,16 +22,16 @@ const fadeInUp = {
 
 export default function Home() {
     return (
-        <main className="min-h-screen bg-[#050505] text-white selection:bg-desert-sand selection:text-black overflow-hidden relative">
+        <main className="min-h-screen bg-sand-100 text-slate-900 selection:bg-rose-200 selection:text-slate-900 overflow-hidden relative">
 
             <HeroScene />
 
-            {/* Gradient Overlay for Readability */}
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050505]/40 to-[#050505] pointer-events-none z-[2]" />
+            {/* Subtle Gradient for Depth */}
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-sand-50/20 to-sand-100 pointer-events-none z-[2]" />
 
             <section className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 pt-32 pb-32">
 
-                {/* Minimalist Hero */}
+                {/* Wellness Hero */}
                 <motion.div
                     initial="hidden"
                     animate="visible"
@@ -43,28 +43,28 @@ export default function Home() {
                             initial={{ opacity: 0, letterSpacing: "0.5em" }}
                             animate={{ opacity: 1, letterSpacing: "0.2em" }}
                             transition={{ duration: 1.5, delay: 0.5 }}
-                            className="text-desert-sand text-xs uppercase mb-6 block font-mono"
+                            className="text-clay text-xs uppercase mb-6 block font-mono font-bold"
                         >
-                            Advocating for the Silent
+                            Wellness • Connection • Advocacy
                         </motion.span>
-                        <h1 className="text-7xl md:text-[10rem] font-bold tracking-tighter text-white mb-4 font-mono leading-none">
-                            UNSPOKEN<span className="text-desert-sand">.</span>
+                        <h1 className="text-7xl md:text-[10rem] font-bold tracking-tighter text-slate-900 mb-4 font-mono leading-none">
+                            UNSPOKEN<span className="text-clay">.</span>
                         </h1>
-                        <p className="text-gray-400 text-xl md:text-2xl font-serif italic tracking-wider max-w-2xl mx-auto leading-relaxed">
-                            A sanctuary for stories that weigh heavy in the heart, but never reach the tongue.
+                        <p className="text-slate-600 text-xl md:text-2xl font-serif italic tracking-wider max-w-2xl mx-auto leading-relaxed">
+                            A sanctuary for stories that weigh heavy in the heart, finding physical and mental equilibrium through the power of the unspoken.
                         </p>
 
                         <div className="flex gap-6 mt-12">
                             <Magnetic>
                                 <Link href="/story">
-                                    <Button size="lg" className="rounded-full bg-white text-black hover:bg-desert-sand transition-colors px-10 py-7 text-lg font-bold shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+                                    <Button size="lg" className="rounded-full bg-clay text-white hover:bg-clay/90 transition-colors px-10 py-7 text-lg font-bold shadow-soft">
                                         The Narrative <ArrowRight className="ml-2 h-5 w-5" />
                                     </Button>
                                 </Link>
                             </Magnetic>
                             <Magnetic>
                                 <Link href="/unspoken">
-                                    <Button variant="secondary" size="lg" className="rounded-full border-white/10 hover:border-white/40 transition-colors px-10 py-7 text-lg font-bold backdrop-blur-md bg-white/5">
+                                    <Button variant="outline" size="lg" className="rounded-full border-clay/10 hover:border-clay/40 transition-colors px-10 py-7 text-lg font-bold backdrop-blur-md bg-white/40 text-clay">
                                         The Platform
                                     </Button>
                                 </Link>
@@ -85,8 +85,8 @@ export default function Home() {
                         <Link href="/story" className="md:col-span-2">
                             <BentoGridItem
                                 title="The Journey"
-                                description="From the depths of silence to the dawn of connection. A first-hand account of the unspoken battle."
-                                header={<div className="flex flex-1 w-full h-full min-h-[10rem] rounded-2xl bg-gradient-to-br from-neutral-900 to-[#050505] border border-white/5" />}
+                                description="Mental health and physical wellbeing. A first-hand account of the unspoken battle and the path to light."
+                                header={<div className="flex flex-1 w-1200 h-full min-h-[10rem] rounded-2xl bg-gradient-to-br from-rose-100 to-sage-100 border border-white/40" />}
                                 icon={<BookOpen className="h-5 w-5" />}
                                 className="md:col-span-2"
                             />
@@ -94,10 +94,10 @@ export default function Home() {
 
                         <Link href="/unspoken">
                             <BentoGridItem
-                                title="Platform"
-                                description="Safe, anonymous, essential. Launching 2024."
-                                header={<div className="flex flex-1 w-full h-full min-h-[10rem] rounded-2xl bg-[#050505] relative overflow-hidden ring-1 ring-inset ring-white/10">
-                                    <div className="absolute inset-0 bg-gradient-to-tr from-desert-sand/20 to-transparent" />
+                                title="Community Hub"
+                                description="A safe space for collective healing. Launching soon."
+                                header={<div className="flex flex-1 w-full h-full min-h-[10rem] rounded-2xl bg-white/60 relative overflow-hidden ring-1 ring-inset ring-clay/5">
+                                    <div className="absolute inset-0 bg-gradient-to-tr from-sage-100/40 to-transparent" />
                                 </div>}
                                 icon={<Mic className="h-5 w-5" />}
                             />
@@ -105,18 +105,18 @@ export default function Home() {
 
                         <Link href="/archive">
                             <BentoGridItem
-                                title="The Archive"
-                                description="1,200+ raw video moments capturing the human condition."
-                                header={<div className="flex flex-1 w-full h-full min-h-[10rem] rounded-2xl bg-gradient-to-tr from-neutral-950 to-neutral-900 border border-white/5" />}
+                                title="Archive"
+                                description="Documenting the raw human experience. Moments of stillness and strength."
+                                header={<div className="flex flex-1 w-full h-full min-h-[10rem] rounded-2xl bg-gradient-to-tr from-sand-100 to-sage-50 border border-white/40" />}
                                 icon={<Archive className="h-5 w-5" />}
                             />
                         </Link>
 
                         <Link href="/contact" className="md:col-span-2">
                             <BentoGridItem
-                                title="Contact"
-                                description="Speaking, coaching, and collaboration inquiries. Together, we break the silence."
-                                header={<div className="flex flex-1 w-full h-full min-h-[10rem] rounded-2xl bg-gradient-to-br from-neutral-800/20 to-neutral-900/50 border border-white/5" />}
+                                title="Voice Your Story"
+                                description="Speaking, advocacy, and shared growth. Breaking the silence together."
+                                header={<div className="flex flex-1 w-full h-full min-h-[10rem] rounded-2xl bg-gradient-to-br from-slate-well/50 to-rose-50 border border-white/40" />}
                                 icon={<Mail className="h-5 w-5" />}
                                 className="md:col-span-2"
                             />
@@ -126,15 +126,15 @@ export default function Home() {
             </section>
 
             {/* Signature Footer */}
-            <footer className="relative z-10 py-20 border-t border-white/5 bg-[#050505]">
-                <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center opacity-40 hover:opacity-100 transition-opacity">
-                    <p className="text-sm font-mono tracking-widest text-desert-sand uppercase mb-4 md:mb-0">
-                        &copy; 2025 Steven Whyte. All Truths Reserved.
+            <footer className="relative z-10 py-20 border-t border-clay/5 bg-sand-50">
+                <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center opacity-60 hover:opacity-100 transition-opacity">
+                    <p className="text-sm font-mono tracking-widest text-clay uppercase mb-4 md:mb-0">
+                        &copy; 2025 Steven Whyte. Wellness & Truth.
                     </p>
-                    <div className="flex gap-8 text-xs font-mono uppercase tracking-widest">
-                        <Link href="/privacy" className="hover:text-desert-sand transition-colors">Privacy</Link>
-                        <Link href="/terms" className="hover:text-desert-sand transition-colors">Terms</Link>
-                        <Link href="/media-kit" className="hover:text-desert-sand transition-colors">Media Kit</Link>
+                    <div className="flex gap-8 text-xs font-mono uppercase tracking-widest text-slate-500">
+                        <Link href="/privacy" className="hover:text-clay transition-colors">Privacy</Link>
+                        <Link href="/terms" className="hover:text-clay transition-colors">Terms</Link>
+                        <Link href="/media-kit" className="hover:text-clay transition-colors">Media Kit</Link>
                     </div>
                 </div>
             </footer>

@@ -4,7 +4,7 @@ import { motion, HTMLMotionProps } from "framer-motion"
 import { cn } from "@/lib/utils"
 
 export interface ButtonProps extends HTMLMotionProps<"button"> {
-    variant?: "primary" | "secondary" | "ghost"
+    variant?: "primary" | "secondary" | "ghost" | "outline"
     size?: "sm" | "md" | "lg"
 }
 
@@ -12,9 +12,10 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ({ className, variant = "primary", size = "md", ...props }, ref) => {
 
         const variants = {
-            primary: "bg-desert-sand text-soft-black hover:bg-white border border-transparent",
-            secondary: "bg-transparent border border-white/20 text-white hover:border-desert-sand hover:text-desert-sand",
-            ghost: "bg-transparent text-gray-400 hover:text-white"
+            primary: "bg-clay text-white hover:bg-clay/90 border border-transparent",
+            secondary: "bg-white/40 backdrop-blur-md border border-clay/10 text-clay hover:bg-white/60",
+            outline: "bg-transparent border border-clay/20 text-clay hover:border-clay/60",
+            ghost: "bg-transparent text-slate-400 hover:text-slate-900"
         }
 
         const sizes = {

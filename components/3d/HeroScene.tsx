@@ -12,18 +12,19 @@ export default function HeroScene() {
         <div className="absolute inset-0 z-[1] pointer-events-none opacity-80">
             <Canvas camera={{ position: [0, 0, 15], fov: 45 }} gl={{ antialias: true, alpha: true }}>
                 <Suspense fallback={null}>
-                    <ambientLight intensity={0.1} />
-                    <pointLight position={[10, 10, 10]} intensity={1} color="#eecfa1" />
+                    <ambientLight intensity={0.5} />
+                    <pointLight position={[10, 10, 10]} intensity={1.5} color="#e8f3ee" />
+                    <pointLight position={[-10, -10, -10]} intensity={0.5} color="#fdf2f2" />
 
-                    <Float speed={1.5} rotationIntensity={0.5} floatIntensity={0.5}>
-                        <Constellation count={80} />
+                    <Float speed={1} rotationIntensity={0.2} floatIntensity={0.2}>
+                        <Constellation count={40} />
                     </Float>
 
-                    <fog attach="fog" args={['#121212', 10, 30]} />
-                    <Environment preset="night" />
+                    <fog attach="fog" args={['#faf7f2', 5, 25]} />
+                    <Environment preset="apartment" />
 
                     <EffectComposer>
-                        <Bloom luminanceThreshold={0.5} mipmapBlur intensity={1.2} radius={0.4} />
+                        <Bloom luminanceThreshold={0.8} mipmapBlur intensity={0.5} radius={0.4} />
                     </EffectComposer>
                 </Suspense>
             </Canvas>

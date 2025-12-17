@@ -2,37 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background: linear-gradient(to bottom, #1a1a1a, #2d2d2d);
-  color: #f5f5f5;
+@layer base {
+  body {
+    @apply bg-sand-100 text-slate-900 transition-colors duration-500;
+  }
+
+  body.dark {
+    @apply bg-[#050505] text-white;
+  }
 }
 
-/* MDX / Prose Styling */
-article h1, article h2, article h3 {
-  color: #eecfa1; /* desert-sand */
-  margin-top: 2rem;
-  margin-bottom: 1rem;
+/* Wellness UI Elements */
+.glass-panel {
+  @apply backdrop-blur-md bg-white/40 border border-white/20 shadow-sm transition-all duration-300;
+}
+
+.dark .glass-panel {
+  @apply bg-white/5 border-white/10 shadow-none;
+}
+
+/* Reading Mode / Prose Styling */
+article {
+  @apply font-serif max-w-3xl mx-auto;
+}
+
+.dark article {
+  @apply text-gray-300;
+}
+
+article h1,
+article h2,
+article h3 {
+  @apply text-slate-900 font-sans font-bold leading-tight mb-6 mt-12;
+}
+
+.dark article h1,
+.dark article h2,
+.dark article h3 {
+  @apply text-white;
 }
 
 article p {
-  margin-bottom: 1rem;
-  line-height: 1.75;
+  @apply mb-6 text-lg leading-relaxed;
 }
 
 article blockquote {
-  border-left: 4px solid #b38b6d; /* clay */
-  padding-left: 1rem;
-  margin: 1.5rem 0;
-  font-style: italic;
-  color: #a0a0a0;
+  @apply border-l-4 border-sage pl-6 my-8 italic text-slate-600;
+}
+
+.dark article blockquote {
+  @apply border-clay text-gray-400;
 }
 
 article a {
-  color: #eecfa1;
-  text-decoration: underline;
+  @apply text-clay underline decoration-sage decoration-2 underline-offset-4 hover:text-clay/80 transition-colors;
 }
 
 article hr {
-  border-color: #4c566a; /* slate-light */
-  margin: 2rem 0;
+  @apply border-sage/30 my-12;
+}
+
+/* Custom Shadow Utility */
+.shadow-soft {
+  box-shadow: 0 4px 20px -1px rgba(18, 18, 18, 0.05), 0 2px 10px -1px rgba(18, 18, 18, 0.03);
 }
