@@ -22,7 +22,6 @@ body::before {
 body.dark {
   @apply bg-[#050505] text-white;
 }
-}
 
 /* Wellness UI Elements */
 .glass-panel {
