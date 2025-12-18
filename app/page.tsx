@@ -49,7 +49,7 @@ export default function Home() {
                         >
                             Mental Health Advocate | Author | Coach
                         </motion.span>
-                        <h1 className="text-7xl md:text-[8rem] lg:text-[10rem] font-bold tracking-tighter text-slate-900 mb-6 font-mono leading-none">
+                        <h1 className="text-7xl md:text-[8rem] lg:text-[10rem] font-bold tracking-tighter text-white mb-6 font-mono leading-none">
                             UNSPOKEN<span className="text-clay">.</span>
                         </h1>
                         <p className="text-slate-light text-xl md:text-2xl font-serif italic tracking-wider max-w-2xl mx-auto leading-relaxed">
