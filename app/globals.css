@@ -58,7 +58,7 @@ article p {
 }
 
 article blockquote {
-  @apply border-l-4 border-clay pl-6 my-8 italic text-slate-light;
+  @apply border-l-4 border-clay pl-6 my-8 italic text-slate-accent;
 }
 
 .dark article blockquote {

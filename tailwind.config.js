@@ -29,10 +29,12 @@ module.exports = {
                 'slate-well': '#f0f4f8', // Soft Wellness Blue
                 'slate-dark': '#2e3440',
                 'slate-light': '#4c566a',
+                'slate-accent': '#e2e8f0', // Very light for dark bg
 
                 // Legacy / Accent colors
                 'desert-sand': '#eecfa1',
                 'clay': '#b38b6d',
+                'clay-light': '#d5b7a1',
                 'soft-black': '#121212',
                 'glass-black': 'rgba(18, 18, 18, 0.7)',
                 'glass-white': 'rgba(255, 255, 255, 0.6)',
