@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/Button";
 import { BentoGrid, BentoGridItem } from "@/components/ui/BentoGrid";
 import { BookOpen, Mic, Archive, Mail, ArrowRight } from "lucide-react";
 import { Magnetic } from "@/components/ui/Interactions";
+import { BreathingUI } from "@/components/ui/BreathingUI";
+import { AffirmationCard } from "@/components/ui/AffirmationCard";
 
 // Dynamically import 3D Scene
 const HeroScene = dynamic(() => import("@/components/3d/HeroScene"), {
@@ -36,9 +38,9 @@ export default function Home() {
                     initial="hidden"
                     animate="visible"
                     variants={fadeInUp}
-                    className="text-center mb-32 z-20"
+                    className="text-center mb-16 z-20"
                 >
-                    <div className="flex flex-col items-center">
+                    <div className="flex flex-col items-center text-center">
                         <motion.span
                             initial={{ opacity: 0, letterSpacing: "0.5em" }}
                             animate={{ opacity: 1, letterSpacing: "0.2em" }}
@@ -47,14 +49,14 @@ export default function Home() {
                         >
                             Wellness • Connection • Advocacy
                         </motion.span>
-                        <h1 className="text-7xl md:text-[10rem] font-bold tracking-tighter text-slate-900 mb-4 font-mono leading-none">
+                        <h1 className="text-7xl md:text-[8rem] lg:text-[10rem] font-bold tracking-tighter text-slate-900 mb-4 font-mono leading-none">
                             UNSPOKEN<span className="text-clay">.</span>
                         </h1>
                         <p className="text-slate-600 text-xl md:text-2xl font-serif italic tracking-wider max-w-2xl mx-auto leading-relaxed">
                             A sanctuary for stories that weigh heavy in the heart, finding physical and mental equilibrium through the power of the unspoken.
                         </p>
 
-                        <div className="flex gap-6 mt-12">
+                        <div className="flex flex-wrap items-center justify-center gap-6 mt-12 mb-20">
                             <Magnetic>
                                 <Link href="/story">
                                     <Button size="lg" className="rounded-full bg-clay text-white hover:bg-clay/90 transition-colors px-10 py-7 text-lg font-bold shadow-soft">
@@ -73,6 +75,27 @@ export default function Home() {
                     </div>
                 </motion.div>
 
+                {/* Breathing & Affirmation Layer */}
+                <div className="flex flex-col lg:flex-row items-center justify-center gap-24 mb-32 w-full max-w-6xl relative z-20">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 1.2 }}
+                        viewport={{ once: true }}
+                    >
+                        <BreathingUI />
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0, x: 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 1, delay: 0.3 }}
+                        viewport={{ once: true }}
+                    >
+                        <AffirmationCard />
+                    </motion.div>
+                </div>
+
                 {/* Bento Grid Navigation */}
                 <motion.div
                     initial={{ opacity: 0, y: 100 }}
@@ -86,7 +109,7 @@ export default function Home() {
                             <BentoGridItem
                                 title="The Journey"
                                 description="Mental health and physical wellbeing. A first-hand account of the unspoken battle and the path to light."
-                                header={<div className="flex flex-1 w-1200 h-full min-h-[10rem] rounded-2xl bg-gradient-to-br from-rose-100 to-sage-100 border border-white/40" />}
+                                header={<div className="flex flex-1 w-full h-full min-h-[10rem] rounded-2xl bg-gradient-to-br from-rose-100 to-sage-100 border border-white/40" />}
                                 icon={<BookOpen className="h-5 w-5" />}
                                 className="md:col-span-2"
                             />

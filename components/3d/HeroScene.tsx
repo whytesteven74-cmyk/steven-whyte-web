@@ -16,7 +16,7 @@ export default function HeroScene() {
                     <pointLight position={[10, 10, 10]} intensity={1.5} color="#e8f3ee" />
                     <pointLight position={[-10, -10, -10]} intensity={0.5} color="#fdf2f2" />
 
-                    <Float speed={1} rotationIntensity={0.2} floatIntensity={0.2}>
+                    <Float speed={0.4} rotationIntensity={0.1} floatIntensity={0.1}>
                         <Constellation count={40} />
                     </Float>
 
