@@ -27,6 +27,8 @@ module.exports = {
                     DEFAULT: '#faf7f2', // Soft Sand
                 },
                 'slate-well': '#f0f4f8', // Soft Wellness Blue
+                'slate-dark': '#2e3440',
+                'slate-light': '#4c566a',
 
                 // Legacy / Accent colors
                 'desert-sand': '#eecfa1',

@@ -45,15 +45,15 @@ export default function Home() {
                             initial={{ opacity: 0, letterSpacing: "0.5em" }}
                             animate={{ opacity: 1, letterSpacing: "0.2em" }}
                             transition={{ duration: 1.5, delay: 0.5 }}
-                            className="text-clay text-xs uppercase mb-6 block font-mono font-bold"
+                            className="text-clay text-xs uppercase mb-4 block font-mono font-bold"
                         >
-                            Wellness • Connection • Advocacy
+                            Mental Health Advocate | Author | Coach
                         </motion.span>
-                        <h1 className="text-7xl md:text-[8rem] lg:text-[10rem] font-bold tracking-tighter text-slate-900 mb-4 font-mono leading-none">
+                        <h1 className="text-7xl md:text-[8rem] lg:text-[10rem] font-bold tracking-tighter text-slate-900 mb-6 font-mono leading-none">
                             UNSPOKEN<span className="text-clay">.</span>
                         </h1>
-                        <p className="text-slate-600 text-xl md:text-2xl font-serif italic tracking-wider max-w-2xl mx-auto leading-relaxed">
-                            A sanctuary for stories that weigh heavy in the heart, finding physical and mental equilibrium through the power of the unspoken.
+                        <p className="text-slate-light text-xl md:text-2xl font-serif italic tracking-wider max-w-2xl mx-auto leading-relaxed">
+                            "Breaking the silence around men's mental health, one unspoken truth at a time."
                         </p>
 
                         <div className="flex flex-wrap items-center justify-center gap-6 mt-12 mb-20">

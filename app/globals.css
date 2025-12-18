@@ -5,9 +5,10 @@
 @layer base {
   body {
     @apply bg-sand-100 text-slate-900 transition-colors duration-500 relative min-h-screen;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    background-size: 200px 200px;
-    background-repeat: repeat;
+    background-image: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%), url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    background-size: cover, 200px 200px;
+    background-repeat: no-repeat, repeat;
+    background-attachment: fixed;
   }
 
   /* Grain Overlay */
@@ -57,7 +58,7 @@ article p {
 }
 
 article blockquote {
-  @apply border-l-4 border-sage pl-6 my-8 italic text-slate-600;
+  @apply border-l-4 border-clay pl-6 my-8 italic text-slate-light;
 }
 
 .dark article blockquote {
