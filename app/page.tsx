@@ -45,14 +45,14 @@ export default function Home() {
                             initial={{ opacity: 0, letterSpacing: "0.5em" }}
                             animate={{ opacity: 1, letterSpacing: "0.2em" }}
                             transition={{ duration: 1.5, delay: 0.5 }}
-                            className="text-clay text-xs uppercase mb-4 block font-mono font-bold"
+                            className="text-clay-light text-xs uppercase mb-4 block font-mono font-bold"
                         >
                             Mental Health Advocate | Author | Coach
                         </motion.span>
                         <h1 className="text-7xl md:text-[8rem] lg:text-[10rem] font-bold tracking-tighter text-white mb-6 font-mono leading-none">
                             UNSPOKEN<span className="text-clay">.</span>
                         </h1>
-                        <p className="text-slate-light text-xl md:text-2xl font-serif italic tracking-wider max-w-2xl mx-auto leading-relaxed">
+                        <p className="text-slate-accent text-xl md:text-2xl font-serif italic tracking-wider max-w-2xl mx-auto leading-relaxed">
                             "Breaking the silence around men's mental health, one unspoken truth at a time."
                         </p>
 
