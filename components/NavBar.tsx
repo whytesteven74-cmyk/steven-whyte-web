@@ -6,13 +6,10 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import { Menu, X } from 'lucide-react';
-import { Magnetic } from './ui/Interactions';
+import { Menu, X, Heart } from 'lucide-react';
 
 const links = [
-    { href: '/', label: 'Home' },
     { href: '/story', label: 'Story' },
-    { href: '/unspoken', label: 'Unspoken' },
     { href: '/archive', label: 'Archive' },
     { href: '/contact', label: 'Contact' },
 ];
@@ -23,43 +20,44 @@ export const NavBar = () => {
 
     return (
         <>
-            {/* Desktop Floating Dock */}
+            {/* Desktop Navigation - Figma Style */}
             <motion.header
-                className="fixed top-8 left-0 right-0 z-[100] hidden md:flex justify-center"
+                className="fixed top-0 left-0 right-0 z-[100] hidden md:block"
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
-                <nav className="bg-glass-black backdrop-blur-2xl border border-white/10 px-6 py-3 rounded-full shadow-2xl flex items-center gap-8">
-                    <Magnetic distance={0.2}>
-                        <Link href="/" className="font-mono text-lg font-bold tracking-tighter text-white hover:text-clay-light transition-colors flex items-center gap-2">
-                            <div className="w-8 h-8 rounded-full bg-clay flex items-center justify-center text-white font-bold text-sm">S</div>
-                            UNSPOKEN.
-                        </Link>
-                    </Magnetic>
+                <nav className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
+                    {/* Logo */}
+                    <Link href="/" className="flex items-center gap-2 group">
+                        <div className="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center group-hover:bg-emerald-200 transition-colors">
+                            <Heart className="w-5 h-5 text-emerald-600" />
+                        </div>
+                        <span className="font-bold text-charcoal-800 text-lg">Steven Whyte</span>
+                    </Link>
 
-                    <div className="flex items-center gap-1">
+                    {/* Navigation Links */}
+                    <div className="flex items-center gap-8">
                         {links.map((link) => {
                             const isActive = pathname === link.href;
                             return (
-                                <Magnetic key={link.href} distance={0.1}>
-                                    <Link
-                                        href={link.href}
-                                        className={cn(
-                                            "relative px-4 py-2 text-xs uppercase tracking-widest font-mono transition-colors hover:text-white",
-                                            isActive ? "text-white" : "text-slate-400"
-                                        )}
-                                    >
-                                        {isActive && (
-                                            <motion.div
-                                                layoutId="nav-pill"
-                                                className="absolute inset-0 bg-clay/5 rounded-full"
-                                                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                                            />
-                                        )}
-                                        <span className="relative z-10">{link.label}</span>
-                                    </Link>
-                                </Magnetic>
+                                <Link
+                                    key={link.href}
+                                    href={link.href}
+                                    className={cn(
+                                        "text-sm font-medium transition-colors relative",
+                                        isActive ? "text-emerald-700" : "text-charcoal-500 hover:text-charcoal-800"
+                                    )}
+                                >
+                                    {link.label}
+                                    {isActive && (
+                                        <motion.div
+                                            layoutId="nav-underline"
+                                            className="absolute -bottom-1 left-0 right-0 h-0.5 bg-emerald-500 rounded-full"
+                                            transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                        />
+                                    )}
+                                </Link>
                             );
                         })}
                     </div>
@@ -67,11 +65,12 @@ export const NavBar = () => {
             </motion.header>
 
             {/* Mobile Nav */}
-            <div className="md:hidden fixed top-0 left-0 right-0 z-[100] p-6 flex justify-between items-center bg-gradient-to-b from-black/80 to-transparent">
-                <Link href="/" className="font-mono text-xl font-bold text-white">
-                    UNSPOKEN.
+            <div className="md:hidden fixed top-0 left-0 right-0 z-[100] p-4 flex justify-between items-center bg-white/80 backdrop-blur-lg border-b border-charcoal-100">
+                <Link href="/" className="flex items-center gap-2">
+                    <Heart className="w-5 h-5 text-emerald-600" />
+                    <span className="font-bold text-charcoal-800">Steven Whyte</span>
                 </Link>
-                <button onClick={() => setIsOpen(!isOpen)} className="text-white p-2">
+                <button onClick={() => setIsOpen(!isOpen)} className="text-charcoal-700 p-2">
                     {isOpen ? <X /> : <Menu />}
                 </button>
             </div>
@@ -79,7 +78,7 @@ export const NavBar = () => {
             {/* Mobile Menu Overlay */}
             {isOpen && (
                 <motion.div
-                    className="fixed inset-0 z-[90] bg-[#1a1a1a] flex flex-col items-center justify-center gap-8 md:hidden"
+                    className="fixed inset-0 z-[90] bg-white flex flex-col items-center justify-center gap-8 md:hidden"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                 >
@@ -88,7 +87,7 @@ export const NavBar = () => {
                             key={link.href}
                             href={link.href}
                             onClick={() => setIsOpen(false)}
-                            className="text-4xl font-bold font-mono text-slate-400 hover:text-clay uppercase tracking-tighter"
+                            className="text-3xl font-bold text-charcoal-700 hover:text-emerald-600 transition-colors"
                         >
                             {link.label}
                         </Link>

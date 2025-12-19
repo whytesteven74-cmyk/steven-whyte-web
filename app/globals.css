@@ -4,76 +4,71 @@
 
 @layer base {
   body {
-    @apply bg-[#1a1a1a] text-slate-100 transition-colors duration-500 relative min-h-screen;
-    background-image: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%), url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    background-size: cover, 200px 200px;
-    background-repeat: no-repeat, repeat;
-    background-attachment: fixed;
+    @apply bg-mint text-charcoal transition-colors duration-500 relative min-h-screen;
+    background-image: linear-gradient(180deg, #F0F9F6 0%, #ffffff 100%);
   }
-}
-
-/* Grain Overlay */
-body::before {
-  content: "";
-  @apply fixed inset-0 pointer-events-none z-[9999] opacity-[0.03];
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-}
-
-body.dark {
-  @apply bg-[#050505] text-white;
 }
 
 /* Wellness UI Elements */
 .glass-panel {
-  @apply backdrop-blur-md bg-white/40 border border-white/20 shadow-sm transition-all duration-300;
+  @apply backdrop-blur-md bg-white/80 border border-emerald-100/50 shadow-soft transition-all duration-300 rounded-3xl;
 }
 
-.dark .glass-panel {
-  @apply bg-white/5 border-white/10 shadow-none;
+/* Cards - Figma Style */
+.card {
+  @apply bg-white rounded-4xl shadow-card border border-charcoal-100/50 p-8 transition-all duration-300;
+}
+
+.card:hover {
+  @apply shadow-lg border-emerald-200;
 }
 
 /* Reading Mode / Prose Styling */
 article {
-  @apply font-serif max-w-3xl mx-auto;
-}
-
-.dark article {
-  @apply text-gray-300;
+  @apply font-serif max-w-3xl mx-auto text-charcoal-700;
 }
 
 article h1,
 article h2,
 article h3 {
-  @apply text-white font-sans font-bold leading-tight mb-6 mt-12;
-}
-
-.dark article h1,
-.dark article h2,
-.dark article h3 {
-  @apply text-white;
+  @apply text-charcoal-800 font-sans font-bold leading-tight mb-6 mt-12;
 }
 
 article p {
-  @apply mb-6 text-lg leading-relaxed;
+  @apply mb-6 text-lg leading-relaxed text-charcoal-600;
 }
 
 article blockquote {
-  @apply border-l-4 border-clay pl-6 my-8 italic text-slate-accent;
-}
-
-.dark article blockquote {
-  @apply border-clay text-gray-400;
+  @apply border-l-4 border-emerald-500 pl-6 my-8 italic text-charcoal-500 bg-mint-50 py-4 rounded-r-2xl;
 }
 
 article a {
-  @apply text-clay underline decoration-sage decoration-2 underline-offset-4 hover:text-clay/80 transition-colors;
+  @apply text-emerald-700 underline decoration-emerald-300 decoration-2 underline-offset-4 hover:text-emerald-600 transition-colors;
 }
 
 article hr {
-  @apply border-sage/30 my-12;
+  @apply border-emerald-100 my-12;
 }
 
-/* Custom Shadow Utility */
+/* Buttons - Figma Pill Style */
+.btn-primary {
+  @apply bg-emerald-700 text-white px-8 py-4 rounded-full font-medium shadow-soft hover:bg-emerald-600 transition-all duration-300;
+}
+
+.btn-secondary {
+  @apply bg-white text-emerald-700 px-8 py-4 rounded-full font-medium border border-emerald-200 hover:border-emerald-400 transition-all duration-300;
+}
+
+/* Section Labels - Figma Style */
+.section-label {
+  @apply text-xs font-mono uppercase tracking-[0.2em] text-emerald-600 mb-4;
+}
+
+/* Custom Utilities */
 .shadow-soft {
-  box-shadow: 0 4px 20px -1px rgba(18, 18, 18, 0.05), 0 2px 10px -1px rgba(18, 18, 18, 0.03);
+  box-shadow: 0 4px 20px -1px rgba(0, 0, 0, 0.05), 0 2px 10px -1px rgba(0, 0, 0, 0.03);
+}
+
+.shadow-card {
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.1);
 }

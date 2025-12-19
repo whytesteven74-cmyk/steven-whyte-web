@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable} scroll-smooth`}>
-            <body className="bg-[#1a1a1a] text-slate-100 min-h-screen antialiased font-sans overflow-x-hidden selection:bg-clay/30 selection:text-white transition-colors duration-500">
+            <body className="bg-mint text-charcoal min-h-screen antialiased font-sans overflow-x-hidden selection:bg-emerald-200 selection:text-emerald-900 transition-colors duration-500">
                 <SmoothScroll>
                     <CursorGlow />
                     <NavBar />
