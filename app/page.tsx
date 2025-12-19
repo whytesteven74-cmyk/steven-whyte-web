@@ -119,8 +119,8 @@ export default function Home() {
                             <BentoGridItem
                                 title="Community Hub"
                                 description="A safe space for collective healing. Launching soon."
-                                header={<div className="flex flex-1 w-full h-full min-h-[10rem] rounded-2xl bg-white/60 relative overflow-hidden ring-1 ring-inset ring-clay/5">
-                                    <div className="absolute inset-0 bg-gradient-to-tr from-sage-100/40 to-transparent" />
+                                header={<div className="flex flex-1 w-full h-full min-h-[10rem] rounded-2xl bg-black/40 relative overflow-hidden ring-1 ring-inset ring-white/5">
+                                    <div className="absolute inset-0 bg-gradient-to-tr from-clay/20 to-transparent" />
                                 </div>}
                                 icon={<Mic className="h-5 w-5" />}
                             />
@@ -130,7 +130,7 @@ export default function Home() {
                             <BentoGridItem
                                 title="Archive"
                                 description="Documenting the raw human experience. Moments of stillness and strength."
-                                header={<div className="flex flex-1 w-full h-full min-h-[10rem] rounded-2xl bg-gradient-to-tr from-sand-100 to-sage-50 border border-white/40" />}
+                                header={<div className="flex flex-1 w-full h-full min-h-[10rem] rounded-2xl bg-gradient-to-tr from-slate-dark to-black border border-white/5" />}
                                 icon={<Archive className="h-5 w-5" />}
                             />
                         </Link>
@@ -139,7 +139,7 @@ export default function Home() {
                             <BentoGridItem
                                 title="Voice Your Story"
                                 description="Speaking, advocacy, and shared growth. Breaking the silence together."
-                                header={<div className="flex flex-1 w-full h-full min-h-[10rem] rounded-2xl bg-gradient-to-br from-slate-well/50 to-rose-50 border border-white/40" />}
+                                header={<div className="flex flex-1 w-full h-full min-h-[10rem] rounded-2xl bg-gradient-to-br from-clay/30 to-black border border-white/5" />}
                                 icon={<Mail className="h-5 w-5" />}
                                 className="md:col-span-2"
                             />
@@ -149,15 +149,15 @@ export default function Home() {
             </section>
 
             {/* Signature Footer */}
-            <footer className="relative z-10 py-20 border-t border-clay/5 bg-sand-50">
+            <footer className="relative z-10 py-20 border-t border-white/5 bg-transparent">
                 <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center opacity-60 hover:opacity-100 transition-opacity">
-                    <p className="text-sm font-mono tracking-widest text-clay uppercase mb-4 md:mb-0">
+                    <p className="text-sm font-mono tracking-widest text-clay-light uppercase mb-4 md:mb-0">
                         &copy; 2025 Steven Whyte. Wellness & Truth.
                     </p>
-                    <div className="flex gap-8 text-xs font-mono uppercase tracking-widest text-slate-500">
-                        <Link href="/privacy" className="hover:text-clay transition-colors">Privacy</Link>
-                        <Link href="/terms" className="hover:text-clay transition-colors">Terms</Link>
-                        <Link href="/media-kit" className="hover:text-clay transition-colors">Media Kit</Link>
+                    <div className="flex gap-8 text-xs font-mono uppercase tracking-widest text-slate-accent">
+                        <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
+                        <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
+                        <Link href="/media-kit" className="hover:text-white transition-colors">Media Kit</Link>
                     </div>
                 </div>
             </footer>

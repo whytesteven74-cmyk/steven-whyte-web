@@ -37,7 +37,7 @@ export const BentoGridItem = ({
         <Magnetic distance={0.1}>
             <div
                 className={cn(
-                    "row-span-1 rounded-3xl group/bento transition duration-500 p-8 bg-white/40 border border-clay/5 flex flex-col space-y-4 hover:border-clay/20 hover:bg-white/60 backdrop-blur-xl relative overflow-hidden h-full shadow-soft",
+                    "row-span-1 rounded-3xl group/bento transition duration-500 p-8 bg-glass-black border border-white/5 flex flex-col space-y-4 hover:border-white/20 hover:bg-black/40 backdrop-blur-xl relative overflow-hidden h-full shadow-2xl",
                     className
                 )}
             >
@@ -51,11 +51,11 @@ export const BentoGridItem = ({
                             <div className="p-2 rounded-lg bg-clay/5 text-clay">
                                 {icon}
                             </div>
-                            <div className="font-sans font-bold text-slate-900 text-xl tracking-tight">
+                            <div className="font-sans font-bold text-white text-xl tracking-tight">
                                 {title}
                             </div>
                         </div>
-                        <div className="font-sans font-normal text-slate-500 text-sm leading-relaxed antialiased">
+                        <div className="font-sans font-normal text-slate-accent text-sm leading-relaxed antialiased">
                             {description}
                         </div>
                     </div>

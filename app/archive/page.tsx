@@ -22,10 +22,10 @@ export default function ArchivePage() {
         <div className="max-w-7xl mx-auto px-6 py-24 min-h-screen">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
                 <div className="max-w-xl">
-                    <h1 className="text-5xl font-mono font-bold text-slate-900 tracking-tighter mb-4">
+                    <h1 className="text-5xl font-mono font-bold text-white tracking-tighter mb-4">
                         THE ARCHIVE<span className="text-clay">.</span>
                     </h1>
-                    <p className="text-slate-600 text-lg font-serif italic">
+                    <p className="text-slate-accent text-lg font-serif italic">
                         A digital sanctuary of captured moments, documenting the raw human experience and the journey of the unspoken.
                     </p>
                 </div>
@@ -37,7 +37,7 @@ export default function ArchivePage() {
                         placeholder="Search hashtags or topics..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full pl-11 pr-4 py-3 bg-white border border-clay/10 rounded-2xl text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay/40 transition-all shadow-soft"
+                        className="w-full pl-11 pr-4 py-3 bg-glass-black border border-white/10 rounded-2xl text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay/40 transition-all shadow-2xl"
                     />
                 </div>
             </div>
@@ -50,7 +50,7 @@ export default function ArchivePage() {
                             <div className="absolute inset-0 pointer-events-none border-[8px] border-white/5 rounded-3xl" />
                         </div>
                         <div className="px-2">
-                            <h3 className="font-mono font-bold text-sm uppercase tracking-wider text-slate-900 mb-1 truncate">
+                            <h3 className="font-mono font-bold text-sm uppercase tracking-wider text-white mb-1 truncate">
                                 {video.title}
                             </h3>
                             <div className="flex flex-wrap gap-2">

@@ -30,9 +30,9 @@ export const NavBar = () => {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             >
-                <nav className="bg-white/60 backdrop-blur-2xl border border-clay/10 px-6 py-3 rounded-full shadow-soft flex items-center gap-8">
+                <nav className="bg-glass-black backdrop-blur-2xl border border-white/10 px-6 py-3 rounded-full shadow-2xl flex items-center gap-8">
                     <Magnetic distance={0.2}>
-                        <Link href="/" className="font-mono text-lg font-bold tracking-tighter text-slate-900 hover:text-clay transition-colors flex items-center gap-2">
+                        <Link href="/" className="font-mono text-lg font-bold tracking-tighter text-white hover:text-clay-light transition-colors flex items-center gap-2">
                             <div className="w-8 h-8 rounded-full bg-clay flex items-center justify-center text-white font-bold text-sm">S</div>
                             UNSPOKEN.
                         </Link>
@@ -46,8 +46,8 @@ export const NavBar = () => {
                                     <Link
                                         href={link.href}
                                         className={cn(
-                                            "relative px-4 py-2 text-xs uppercase tracking-widest font-mono transition-colors hover:text-slate-900",
-                                            isActive ? "text-slate-900" : "text-slate-400"
+                                            "relative px-4 py-2 text-xs uppercase tracking-widest font-mono transition-colors hover:text-white",
+                                            isActive ? "text-white" : "text-slate-400"
                                         )}
                                     >
                                         {isActive && (
@@ -67,11 +67,11 @@ export const NavBar = () => {
             </motion.header>
 
             {/* Mobile Nav */}
-            <div className="md:hidden fixed top-0 left-0 right-0 z-[100] p-6 flex justify-between items-center bg-gradient-to-b from-white/80 to-transparent">
-                <Link href="/" className="font-mono text-xl font-bold text-slate-900">
+            <div className="md:hidden fixed top-0 left-0 right-0 z-[100] p-6 flex justify-between items-center bg-gradient-to-b from-black/80 to-transparent">
+                <Link href="/" className="font-mono text-xl font-bold text-white">
                     UNSPOKEN.
                 </Link>
-                <button onClick={() => setIsOpen(!isOpen)} className="text-slate-900 p-2">
+                <button onClick={() => setIsOpen(!isOpen)} className="text-white p-2">
                     {isOpen ? <X /> : <Menu />}
                 </button>
             </div>
@@ -79,7 +79,7 @@ export const NavBar = () => {
             {/* Mobile Menu Overlay */}
             {isOpen && (
                 <motion.div
-                    className="fixed inset-0 z-[90] bg-sand-100 flex flex-col items-center justify-center gap-8 md:hidden"
+                    className="fixed inset-0 z-[90] bg-[#1a1a1a] flex flex-col items-center justify-center gap-8 md:hidden"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                 >
