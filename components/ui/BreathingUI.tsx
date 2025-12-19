@@ -24,7 +24,7 @@ export const BreathingUI = () => {
                         opacity: phase === "Inhale" ? 0.3 : 0.1,
                     }}
                     transition={{ duration: 4, ease: "easeInOut" }}
-                    className="absolute inset-0 bg-sage-200 rounded-full blur-3xl"
+                    className="absolute inset-0 bg-clay/20 rounded-full blur-3xl"
                 />
 
                 {/* Breathing Circle */}
@@ -54,7 +54,7 @@ export const BreathingUI = () => {
                 <div className="absolute inset-0 rounded-full border border-dashed border-clay/5 animate-[spin_20s_linear_infinite]" />
             </div>
 
-            <p className="text-[10px] font-mono text-slate-400 uppercase tracking-widest text-center max-w-[200px] leading-relaxed">
+            <p className="text-[10px] font-mono text-slate-accent uppercase tracking-widest text-center max-w-[200px] leading-relaxed">
                 Sync your breath. <br /> Find the space between thoughts.
             </p>
         </div>

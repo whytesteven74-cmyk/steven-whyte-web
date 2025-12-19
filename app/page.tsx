@@ -24,12 +24,12 @@ const fadeInUp = {
 
 export default function Home() {
     return (
-        <main className="min-h-screen bg-sand-100 text-slate-900 selection:bg-rose-200 selection:text-slate-900 overflow-hidden relative">
+        <main className="min-h-screen bg-[#1a1a1a] text-slate-100 selection:bg-clay/30 selection:text-white overflow-hidden relative">
 
             <HeroScene />
 
             {/* Subtle Gradient for Depth */}
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-sand-50/20 to-sand-100 pointer-events-none z-[2]" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-[#1a1a1a] pointer-events-none z-[2]" />
 
             <section className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 pt-32 pb-32">
 
@@ -66,7 +66,7 @@ export default function Home() {
                             </Magnetic>
                             <Magnetic>
                                 <Link href="/unspoken">
-                                    <Button variant="outline" size="lg" className="rounded-full border-clay/10 hover:border-clay/40 transition-colors px-10 py-7 text-lg font-bold backdrop-blur-md bg-white/40 text-clay">
+                                    <Button variant="outline" size="lg" className="rounded-full px-10 py-7 text-lg font-bold shadow-2xl">
                                         The Platform
                                     </Button>
                                 </Link>
@@ -109,7 +109,7 @@ export default function Home() {
                             <BentoGridItem
                                 title="The Journey"
                                 description="Mental health and physical wellbeing. A first-hand account of the unspoken battle and the path to light."
-                                header={<div className="flex flex-1 w-full h-full min-h-[10rem] rounded-2xl bg-gradient-to-br from-rose-100 to-sage-100 border border-white/40" />}
+                                header={<div className="flex flex-1 w-full h-full min-h-[10rem] rounded-2xl bg-gradient-to-br from-clay/20 to-black border border-white/5" />}
                                 icon={<BookOpen className="h-5 w-5" />}
                                 className="md:col-span-2"
                             />

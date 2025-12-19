@@ -42,7 +42,7 @@ export const AffirmationCard = () => {
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: -20 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="font-serif italic text-lg text-slate-800 leading-relaxed"
+                        className="font-serif italic text-lg text-slate-accent leading-relaxed"
                     >
                         "{AFFIRMATIONS[index]}"
                     </motion.p>
@@ -50,7 +50,7 @@ export const AffirmationCard = () => {
             </div>
 
             <div className="mt-8 flex justify-between items-center">
-                <span className="text-[9px] font-mono text-slate-400 uppercase">Daily Awareness • {index + 1}/{AFFIRMATIONS.length}</span>
+                <span className="text-[9px] font-mono text-slate-light uppercase">Daily Awareness • {index + 1}/{AFFIRMATIONS.length}</span>
                 <button
                     onClick={() => setIndex((prev) => (prev + 1) % AFFIRMATIONS.length)}
                     className="w-6 h-6 rounded-full border border-clay/10 flex items-center justify-center hover:bg-clay hover:border-clay hover:text-white transition-all text-clay"
