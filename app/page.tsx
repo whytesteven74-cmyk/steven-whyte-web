@@ -35,7 +35,7 @@ export default function Home() {
                         className="section-label inline-flex items-center gap-2"
                     >
                         <Heart className="w-3 h-3 text-emerald-500" />
-                        A Journey of Hope
+                        Mental Health Advocate | Author | Coach
                     </motion.span>
 
                     {/* Main Headline */}
@@ -43,9 +43,9 @@ export default function Home() {
                         variants={fadeInUp}
                         className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-charcoal-800 mb-6 leading-[0.9]"
                     >
-                        Stories of Healing
+                        Breaking the
                         <br />
-                        <span className="text-emerald-700">& Resilience</span>
+                        <span className="text-emerald-700">Silence.</span>
                     </motion.h1>
 
                     {/* Subheadline */}
@@ -53,7 +53,7 @@ export default function Home() {
                         variants={fadeInUp}
                         className="text-xl md:text-2xl text-charcoal-500 max-w-2xl mx-auto mb-12 leading-relaxed"
                     >
-                        Explore personal stories of healing and resilience while gaining insights into the power of nature and community.
+                        "Breaking the silence around men's mental health, one unspoken truth at a time."
                     </motion.p>
 
                     {/* CTA Buttons */}
