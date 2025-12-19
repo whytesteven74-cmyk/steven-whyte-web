@@ -4,19 +4,21 @@
 
 @layer base {
   body {
-    @apply bg-mint text-charcoal transition-colors duration-500 relative min-h-screen;
+    @apply bg-[#F0F9F6] text-gray-700 transition-colors duration-500 relative min-h-screen;
     background-image: linear-gradient(180deg, #F0F9F6 0%, #ffffff 100%);
   }
 }
 
 /* Wellness UI Elements */
 .glass-panel {
-  @apply backdrop-blur-md bg-white/80 border border-emerald-100/50 shadow-soft transition-all duration-300 rounded-3xl;
+  @apply backdrop-blur-md bg-white/80 border border-emerald-100 shadow-soft transition-all duration-300 rounded-3xl;
 }
 
 /* Cards - Figma Style */
 .card {
-  @apply bg-white rounded-4xl shadow-card border border-charcoal-100/50 p-8 transition-all duration-300;
+  @apply bg-white rounded-3xl p-8 transition-all duration-300;
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(203, 213, 225, 0.5);
 }
 
 .card:hover {
@@ -25,21 +27,21 @@
 
 /* Reading Mode / Prose Styling */
 article {
-  @apply font-serif max-w-3xl mx-auto text-charcoal-700;
+  @apply font-serif max-w-3xl mx-auto text-gray-700;
 }
 
 article h1,
 article h2,
 article h3 {
-  @apply text-charcoal-800 font-sans font-bold leading-tight mb-6 mt-12;
+  @apply text-gray-800 font-sans font-bold leading-tight mb-6 mt-12;
 }
 
 article p {
-  @apply mb-6 text-lg leading-relaxed text-charcoal-600;
+  @apply mb-6 text-lg leading-relaxed text-gray-600;
 }
 
 article blockquote {
-  @apply border-l-4 border-emerald-500 pl-6 my-8 italic text-charcoal-500 bg-mint-50 py-4 rounded-r-2xl;
+  @apply border-l-4 border-emerald-500 pl-6 my-8 italic text-gray-500 bg-emerald-50 py-4 rounded-r-2xl;
 }
 
 article a {
@@ -67,8 +69,4 @@ article hr {
 /* Custom Utilities */
 .shadow-soft {
   box-shadow: 0 4px 20px -1px rgba(0, 0, 0, 0.05), 0 2px 10px -1px rgba(0, 0, 0, 0.03);
-}
-
-.shadow-card {
-  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.1);
 }
