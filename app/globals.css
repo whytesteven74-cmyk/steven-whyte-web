@@ -3,165 +3,183 @@
 @tailwind utilities;
 
 /* ============================================
-   BASE STYLES
+   BASE STYLES - Using standard CSS
    ============================================ */
-@layer base {
-  :root {
-    --color-primary: 16 185 129;
-    /* emerald-500 */
-    --color-secondary: 14 165 233;
-    /* sky-500 */
-    --color-background: 250 250 250;
-    --color-foreground: 23 23 23;
-  }
-
-  html {
-    scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  body {
-    @apply bg-white text-gray-900 transition-colors duration-300;
-    font-feature-settings: "rlig" 1, "calt" 1;
-  }
-
-  ::selection {
-    @apply bg-emerald-200 text-emerald-900;
-  }
+:root {
+  --color-primary: 16 185 129;
+  --color-secondary: 14 165 233;
+  --color-background: 250 250 250;
+  --color-foreground: 23 23 23;
 }
 
-/* ============================================
-   TYPOGRAPHY
-   ============================================ */
-@layer base {
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-bold tracking-tight text-gray-900;
-  }
+body {
+  background-color: white;
+  color: rgb(17 24 39);
+  /* gray-900 */
+  transition-property: color, background-color;
+  transition-duration: 300ms;
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
 
-  p {
-    @apply leading-relaxed;
-  }
+::selection {
+  background-color: rgb(167 243 208);
+  /* emerald-200 */
+  color: rgb(6 78 59);
+  /* emerald-900 */
+}
 
-  a {
-    @apply transition-colors duration-200;
-  }
+/* Typography base */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: rgb(17 24 39);
+  /* gray-900 */
+}
+
+p {
+  line-height: 1.625;
+}
+
+a {
+  transition: color 200ms;
 }
 
 /* ============================================
    MODERN UTILITIES
    ============================================ */
-@layer utilities {
 
-  /* Gradient Text */
-  .text-gradient {
-    @apply bg-gradient-to-r from-emerald-500 to-sky-500 bg-clip-text text-transparent;
-  }
-
-  .text-gradient-warm {
-    @apply bg-gradient-to-r from-amber-500 to-rose-500 bg-clip-text text-transparent;
-  }
-
-  /* Glass Effects */
-  .glass {
-    @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-xl;
-  }
-
-  .glass-dark {
-    @apply bg-gray-900/70 backdrop-blur-xl border border-white/10 shadow-xl;
-  }
-
-  /* Modern Shadows */
-  .shadow-glow {
-    box-shadow: 0 0 40px -10px rgba(16, 185, 129, 0.3);
-  }
-
-  .shadow-glow-lg {
-    box-shadow: 0 0 60px -15px rgba(16, 185, 129, 0.4);
-  }
-
-  .shadow-soft {
-    box-shadow:
-      0 4px 6px -1px rgba(0, 0, 0, 0.05),
-      0 2px 4px -1px rgba(0, 0, 0, 0.03);
-  }
-
-  .shadow-elevation {
-    box-shadow:
-      0 1px 2px rgba(0, 0, 0, 0.04),
-      0 4px 8px rgba(0, 0, 0, 0.04),
-      0 16px 32px rgba(0, 0, 0, 0.04);
-  }
-
-  /* Gradient Backgrounds */
-  .bg-gradient-radial {
-    background: radial-gradient(ellipse at center, var(--tw-gradient-stops));
-  }
-
-  .bg-dots {
-    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
-    background-size: 24px 24px;
-  }
-
-  .bg-grid {
-    background-image:
-      linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-      linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
-    background-size: 4rem 4rem;
-  }
-
-  /* Animated Gradient Border */
-  .border-gradient {
-    position: relative;
-  }
-
-  .border-gradient::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    padding: 2px;
-    border-radius: inherit;
-    background: linear-gradient(135deg, #10b981, #0ea5e9);
-    -webkit-mask:
-      linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-  }
-
-  /* Hover Effects */
-  .hover-lift {
-    @apply transition-transform duration-300 hover:-translate-y-1;
-  }
-
-  .hover-scale {
-    @apply transition-transform duration-300 hover:scale-[1.02];
-  }
-
-  /* Animation Utilities */
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-
-  .animate-pulse-slow {
-    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-
-  .animate-gradient {
-    animation: gradient 8s ease infinite;
-    background-size: 200% 200%;
-  }
+/* Gradient Text */
+.text-gradient {
+  background: linear-gradient(to right, rgb(16 185 129), rgb(14 165 233));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-/* ============================================
-   KEYFRAMES
-   ============================================ */
+.text-gradient-warm {
+  background: linear-gradient(to right, rgb(245 158 11), rgb(244 63 94));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Glass Effects */
+.glass {
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.glass-dark {
+  background-color: rgba(17, 24, 39, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Modern Shadows */
+.shadow-glow {
+  box-shadow: 0 0 40px -10px rgba(16, 185, 129, 0.3);
+}
+
+.shadow-glow-lg {
+  box-shadow: 0 0 60px -15px rgba(16, 185, 129, 0.4);
+}
+
+.shadow-soft {
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.shadow-elevation {
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 4px 8px rgba(0, 0, 0, 0.04),
+    0 16px 32px rgba(0, 0, 0, 0.04);
+}
+
+/* Gradient Backgrounds */
+.bg-gradient-radial {
+  background: radial-gradient(ellipse at center, var(--tw-gradient-stops));
+}
+
+.bg-dots {
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 4rem 4rem;
+}
+
+/* Animated Gradient Border */
+.border-gradient {
+  position: relative;
+}
+
+.border-gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #10b981, #0ea5e9);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* Hover Effects */
+.hover-lift {
+  transition: transform 300ms;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+.hover-scale {
+  transition: transform 300ms;
+}
+
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+
+/* Animations */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-gradient {
+  animation: gradient 8s ease infinite;
+  background-size: 200% 200%;
+}
+
 @keyframes float {
 
   0%,
@@ -192,56 +210,131 @@
    ARTICLE / MDX STYLES
    ============================================ */
 article {
-  @apply max-w-3xl mx-auto;
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 article h1 {
-  @apply text-4xl md:text-5xl lg:text-6xl font-bold mb-8 mt-0;
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  margin-top: 0;
+}
+
+@media (min-width: 768px) {
+  article h1 {
+    font-size: 3rem;
+  }
 }
 
 article h2 {
-  @apply text-2xl md:text-3xl font-bold mb-6 mt-16 pb-4 border-b border-gray-100;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  margin-top: 4rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgb(243 244 246);
+}
+
+@media (min-width: 768px) {
+  article h2 {
+    font-size: 1.875rem;
+  }
 }
 
 article h3 {
-  @apply text-xl md:text-2xl font-bold mb-4 mt-12;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  margin-top: 3rem;
 }
 
 article p {
-  @apply text-lg text-gray-600 mb-6 leading-relaxed;
+  font-size: 1.125rem;
+  color: rgb(75 85 99);
+  /* gray-600 */
+  margin-bottom: 1.5rem;
+  line-height: 1.75;
 }
 
 article blockquote {
-  @apply border-l-4 border-emerald-500 pl-6 py-4 my-8 bg-emerald-50/50 rounded-r-xl italic text-gray-700;
+  border-left: 4px solid rgb(16 185 129);
+  /* emerald-500 */
+  padding-left: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  background-color: rgba(236, 253, 245, 0.5);
+  /* emerald-50/50 */
+  border-radius: 0 0.75rem 0.75rem 0;
+  font-style: italic;
+  color: rgb(55 65 81);
+  /* gray-700 */
 }
 
 article a {
-  @apply text-emerald-600 underline decoration-emerald-200 decoration-2 underline-offset-4 hover:decoration-emerald-500 transition-colors;
+  color: rgb(4 120 87);
+  /* emerald-700 */
+  text-decoration: underline;
+  text-decoration-color: rgb(167 243 208);
+  /* emerald-300 */
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  transition: color 200ms;
+}
+
+article a:hover {
+  color: rgb(5 150 105);
+  /* emerald-600 */
 }
 
 article ul,
 article ol {
-  @apply mb-6 pl-6 space-y-2;
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
 }
 
 article li {
-  @apply text-lg text-gray-600;
+  font-size: 1.125rem;
+  color: rgb(75 85 99);
+  margin-bottom: 0.5rem;
 }
 
 article hr {
-  @apply my-12 border-gray-200;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  border-color: rgb(229 231 235);
+  /* gray-200 */
 }
 
 article code {
-  @apply bg-gray-100 px-2 py-0.5 rounded text-sm font-mono text-gray-800;
+  background-color: rgb(243 244 246);
+  /* gray-100 */
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  color: rgb(31 41 55);
+  /* gray-800 */
 }
 
 article pre {
-  @apply bg-gray-900 text-gray-100 p-6 rounded-2xl my-8 overflow-x-auto;
+  background-color: rgb(17 24 39);
+  /* gray-900 */
+  color: rgb(243 244 246);
+  /* gray-100 */
+  padding: 1.5rem;
+  border-radius: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  overflow-x: auto;
 }
 
 article pre code {
-  @apply bg-transparent p-0;
+  background-color: transparent;
+  padding: 0;
 }
 
 /* ============================================
@@ -253,13 +346,17 @@ article pre code {
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-gray-100;
+  background-color: rgb(243 244 246);
+  /* gray-100 */
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 rounded-full;
+  background-color: rgb(209 213 219);
+  /* gray-300 */
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-400;
+  background-color: rgb(156 163 175);
+  /* gray-400 */
 }
