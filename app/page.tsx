@@ -6,6 +6,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown, Heart, Footprints, Sunrise, ArrowRight, Mail, MapPin } from "lucide-react";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { SocialFeed } from "@/components/social/SocialFeed";
+import DynamicHeroScene from "@/components/3d/DynamicHeroScene";
 
 export default function Home() {
     const containerRef = useRef(null);
@@ -34,6 +35,9 @@ export default function Home() {
                     style={{ scale: heroScale, opacity: heroOpacity }}
                     className="absolute inset-0 z-0"
                 >
+                    {/* Dynamic 3D Scene for Performance Optimization */}
+                    <DynamicHeroScene />
+                    {/* Background Gradient - "The Northern Lights" feel */}
                     <div className="absolute inset-0 bg-hero-premium opacity-80" />
                     <div className="absolute top-[-20%] left-[-10%] w-[70vw] h-[70vw] rounded-full bg-emerald-100/50 blur-[120px] mix-blend-multiply animate-pulse-slow" />
                     <div className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] rounded-full bg-teal-100/40 blur-[100px] mix-blend-multiply animate-pulse-slow" style={{ animationDelay: "2s" }} />
