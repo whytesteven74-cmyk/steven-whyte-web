@@ -5,10 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Heart } from "lucide-react";
-
-// ============================================
-// FIGMA SAGE GREEN NAVIGATION
-// ============================================
+import { identity } from "@/data/identity";
 
 const navLinks = [
     { href: "/story", label: "Story" },
@@ -54,10 +51,10 @@ export const NavBar: React.FC = () => {
                                     scrollToTop();
                                 }
                             }}
-                            className="flex items-center gap-2 text-stone-700 hover:text-green-600 transition-colors"
+                            className="flex items-center gap-2 text-stone-700 hover:text-emerald-600 transition-colors"
                         >
-                            <Heart className="w-5 h-5" />
-                            <span className="font-medium">Healing Journey</span>
+                            <Heart className="w-5 h-5 text-emerald-600" />
+                            <span className="font-serif italic tracking-wide text-lg">{identity.name}</span>
                         </Link>
 
                         {/* Desktop Navigation */}
@@ -66,9 +63,9 @@ export const NavBar: React.FC = () => {
                                 <Link
                                     key={link.href}
                                     href={link.href}
-                                    className={`transition-colors ${pathname === link.href
-                                            ? "text-green-600"
-                                            : "text-stone-600 hover:text-green-600"
+                                    className={`transition-colors font-sans text-sm tracking-widest uppercase ${pathname === link.href
+                                        ? "text-emerald-600 font-bold"
+                                        : "text-stone-600 hover:text-emerald-600"
                                         }`}
                                 >
                                     {link.label}
@@ -78,7 +75,7 @@ export const NavBar: React.FC = () => {
 
                         {/* Mobile Menu Button */}
                         <button
-                            className="md:hidden p-2 text-stone-600 hover:text-green-600 transition-colors"
+                            className="md:hidden p-2 text-stone-600 hover:text-emerald-600 transition-colors"
                             onClick={() => setIsOpen(!isOpen)}
                             aria-label="Toggle menu"
                         >
@@ -95,14 +92,14 @@ export const NavBar: React.FC = () => {
                                 exit={{ opacity: 0, height: 0 }}
                                 className="md:hidden mt-4 pb-4"
                             >
-                                <div className="flex flex-col gap-4 bg-white/60 backdrop-blur-sm rounded-2xl p-4">
+                                <div className="flex flex-col gap-4 bg-white/90 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-emerald-50">
                                     {navLinks.map((link) => (
                                         <Link
                                             key={link.href}
                                             href={link.href}
-                                            className={`py-2 transition-colors ${pathname === link.href
-                                                    ? "text-green-600"
-                                                    : "text-stone-600 hover:text-green-600"
+                                            className={`py-2 transition-colors font-sans text-lg tracking-widest uppercase ${pathname === link.href
+                                                ? "text-emerald-600 font-bold"
+                                                : "text-stone-600 hover:text-emerald-600"
                                                 }`}
                                         >
                                             {link.label}

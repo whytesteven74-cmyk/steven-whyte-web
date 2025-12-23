@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Heart } from "lucide-react";
+import { identity } from "@/data/identity";
 
 export const Preloader = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -43,7 +44,7 @@ export const Preloader = () => {
                         transition={{ delay: 0.5, duration: 0.8 }}
                         className="mt-6 font-serif text-emerald-900 tracking-widest uppercase text-[10px]"
                     >
-                        Whispers From the Path
+                        {identity.journey.theme}
                     </motion.p>
                 </motion.div>
             )}
