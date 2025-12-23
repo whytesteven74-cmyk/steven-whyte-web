@@ -3,13 +3,15 @@
 @tailwind utilities;
 
 /* ============================================
-   SAGE GREEN FIGMA THEME
-   Calm, nature-inspired palette for healing
+   WORLD-CLASS THEME (Ex-FAANG Polish)
+   Deep contrast, editorial type, native feel.
    ============================================ */
 
 :root {
   --background: #ffffff;
-  --foreground: #1c1917;
+  --foreground: #022c22;
+  /* emerald-950 (Deep Forest) */
+  --font-serif: var(--font-playfair), serif;
 }
 
 html {
@@ -18,18 +20,11 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Add noise texture to body using SVG data URI for better performance/quality than raw CSS gradients */
+/* Subtle grain for texture - reduces "digital" sterility */
 body {
-  background-color: white;
-  color: rgb(68 64 60);
-  /* stone-600 */
+  background-color: var(--background);
+  color: var(--foreground);
   font-feature-settings: "rlig" 1, "calt" 1;
-}
-
-/* Noise overlay utility */
-.bg-noise {
-  position: relative;
-  overflow: hidden;
 }
 
 .bg-noise::before {
@@ -37,310 +32,175 @@ body {
   position: absolute;
   inset: 0;
   z-index: 0;
-  opacity: 0.4;
+  opacity: 0.3;
+  /* Increased slightly for texture */
   pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
 }
 
 ::selection {
-  background-color: rgb(167 243 208);
-  /* emerald-200 */
-  color: rgb(6 78 59);
+  background-color: #064e3b;
   /* emerald-900 */
+  color: #ecfdf5;
+  /* emerald-50 */
 }
 
 /* ============================================
    TYPOGRAPHY
    ============================================ */
-/* ... (standard typography remains the same) ... */
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-weight: 500;
-  line-height: 1.5;
-  color: rgb(41 37 36);
-  /* stone-800 */
+  font-family: var(--font-serif);
+  font-weight: 600;
+  /* Editorial weight */
+  letter-spacing: -0.02em;
+  /* Tight editorial tracking */
+  line-height: 1.1;
+  color: #022c22;
+  /* emerald-950 */
 }
 
 h1 {
-  font-size: 2.25rem;
+  font-size: 3.5rem;
 }
 
-h2 {
-  font-size: 1.875rem;
-}
-
-h3 {
-  font-size: 1.25rem;
+/* Mobile base */
+@media (min-width: 768px) {
+  h1 {
+    font-size: 5rem;
+  }
 }
 
 p {
-  line-height: 1.75;
-  color: rgb(68 64 60);
-  /* stone-600 */
-}
-
-a {
-  transition: color 200ms;
+  line-height: 1.6;
+  color: #374151;
+  /* gray-700 - reduced contrast for body vs headers */
+  font-weight: 450;
+  /* slightly heavier for legibility */
 }
 
 /* ============================================
-   PREMIUM GLASSMORPHISM
-   Refined with multiple shadows and depth
+   PREMIUM GLASSMORPHISM & SURFACES
    ============================================ */
 
-.card-glass,
-.card-glass-green,
-.card-glass-teal {
+/* The "Apple" Card - Heavy blur, subtle border, deep shadow */
+.card-premium {
   position: relative;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 1.5rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Add subtle noise to cards */
-.card-glass::after,
-.card-glass-green::after,
-.card-glass-teal::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  opacity: 0.05;
-  z-index: -1;
-  border-radius: inherit;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  pointer-events: none;
-}
-
-.card-glass {
-  background-color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   box-shadow:
     0 4px 6px -1px rgba(0, 0, 0, 0.05),
-    0 10px 15px -3px rgba(0, 0, 0, 0.05),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
-  /* Inner highlight */
-  border: 1px solid rgba(167, 243, 208, 0.5);
-  /* emerald-200 */
+    0 20px 25px -5px rgba(0, 0, 0, 0.05),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+  /* Inner light ring */
+  border-radius: 2rem;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  isolation: isolate;
 }
 
-.card-glass-green {
-  background-color: rgba(255, 255, 255, 0.7);
-  box-shadow:
-    0 4px 6px -1px rgba(0, 0, 0, 0.05),
-    0 10px 15px -3px rgba(0, 0, 0, 0.05),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
-  border: 1px solid rgba(187, 247, 208, 0.5);
-  /* green-200 */
-}
-
-.card-glass-teal {
-  background-color: rgba(255, 255, 255, 0.7);
-  box-shadow:
-    0 4px 6px -1px rgba(0, 0, 0, 0.05),
-    0 10px 15px -3px rgba(0, 0, 0, 0.05),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
-  border: 1px solid rgba(153, 246, 228, 0.5);
-  /* teal-200 */
-}
-
-/* Hover effects for premium feel */
-.card-glass:hover,
-.card-glass-green:hover,
-.card-glass-teal:hover {
-  transform: translateY(-4px);
+.card-premium:hover {
+  transform: translateY(-4px) scale(1.005);
   box-shadow:
     0 20px 25px -5px rgba(0, 0, 0, 0.1),
-    0 8px 10px -6px rgba(0, 0, 0, 0.05),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+    0 40px 50px -10px rgba(0, 0, 0, 0.05);
+  /* Deep elevator shadow */
+  background: rgba(255, 255, 255, 0.8);
 }
 
-/* ============================================
-   GRADIENT BACKGROUNDS
-   ============================================ */
-
-.bg-hero-sage {
-  background: linear-gradient(135deg, rgb(236, 253, 245) 0%, rgb(240, 253, 250) 100%);
-  /* emerald-50 -> teal-50 */
-}
-
-.bg-section-sage {
-  background: linear-gradient(180deg, rgb(240, 253, 250) 0%, rgb(236, 253, 245) 100%);
-}
-
-.bg-footer-sage {
-  background: linear-gradient(180deg, rgb(209 250 229) 0%, rgb(220 252 231) 100%);
-}
-
-
-/* ============================================
-   ICON CONTAINERS
-   ============================================ */
-/* ... (icon styles same with polished shadows) ... */
-
-.icon-circle-emerald,
-.icon-circle-green,
-.icon-circle-teal {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 5rem;
-  height: 5rem;
-  border-radius: 9999px;
-  box-shadow: inset 0 2px 4px 0 rgba(255, 255, 255, 0.3);
-}
-
-.icon-circle-emerald {
-  background: linear-gradient(135deg, rgb(110 231 183), rgb(52 211 153));
-}
-
-.icon-circle-green {
-  background: linear-gradient(135deg, rgb(134 239 172), rgb(74 222 128));
-}
-
-.icon-circle-teal {
-  background: linear-gradient(135deg, rgb(94 234 212), rgb(45 212 191));
-}
-
-/* ============================================
-   BUTTONS
-   ============================================ */
-/* ... (button styles refined) ... */
-
-.btn-primary-sage {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.875rem 2.5rem;
-  /* Larger touch target */
-  font-weight: 500;
-  letter-spacing: 0.025em;
+/* Dark Mode / Deep Card */
+.card-premium-dark {
+  background: rgba(2, 44, 34, 0.85);
+  /* emerald-950 glass */
+  backdrop-filter: blur(24px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   color: white;
-  background: linear-gradient(to right, rgb(16 185 129), rgb(34 197 94));
-  border-radius: 9999px;
-  box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2), 0 2px 4px -1px rgba(16, 185, 129, 0.1);
-  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  border-radius: 2rem;
 }
 
-.btn-primary-sage:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.4), 0 4px 6px -2px rgba(16, 185, 129, 0.2);
+/* ============================================
+   GRADIENTS (Rich & Deep)
+   ============================================ */
+
+.bg-hero-premium {
+  /* Multi-stop deep gradient */
+  background: radial-gradient(circle at 50% 0%, #ecfdf5 0%, #ffffff 60%, #f0fdf4 100%);
 }
 
-.btn-outline-sage {
+.text-gradient-premium {
+  background: linear-gradient(135deg, #022c22 0%, #059669 100%);
+  /* emerald-950 -> emerald-600 */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ============================================
+   BUTTONS (Tactile)
+   ============================================ */
+
+.btn-premium-primary {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  padding: 0.875rem 2.5rem;
+  gap: 0.5rem;
+  padding: 1rem 2.5rem;
+  background: #022c22;
+  /* emerald-950 */
+  color: white;
+  border-radius: 9999px;
   font-weight: 500;
-  color: rgb(41 37 36);
-  background: transparent;
-  border: 1px solid rgb(209 213 219);
-  /* lighter border initially */
-  border-radius: 9999px;
-  transition: all 300ms ease;
+  letter-spacing: 0.01em;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
-.btn-outline-sage:hover {
-  border-color: rgb(16 185 129);
-  background-color: rgb(236 253 245);
-  transform: translateY(-2px);
+.btn-premium-primary:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+  background: #064e3b;
+  /* emerald-900 */
+}
+
+.btn-premium-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2.5rem;
+  background: transparent;
+  color: #022c22;
+  border: 1px solid #e5e7eb;
+  /* gray-200 */
+  border-radius: 9999px;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.btn-premium-outline:hover {
+  border-color: #022c22;
+  background: rgba(2, 44, 34, 0.03);
 }
 
 /* ============================================
-   NAVIGATION
+   UTILS
    ============================================ */
-/* ... (nav styles) ... */
-
-.nav-scrolled {
-  background-color: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(16px);
-  /* Stronger blur */
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+.font-serif {
+  font-family: var(--font-serif);
 }
 
-.nav-transparent {
-  background: transparent;
-  backdrop-filter: blur(0px);
-  /* Transition requires starting value */
+.tracking-editorial {
+  letter-spacing: -0.03em;
 }
 
-/* ============================================
-   BLUR DECORATIONS
-   ============================================ */
-
-.blur-circle {
-  position: absolute;
-  border-radius: 9999px;
-  filter: blur(64px);
-  /* Softer blur */
-  mix-blend-mode: multiply;
-  /* Better blending */
-  opacity: 0.6;
-}
-
-/* ... (rest of typography/mdx) ... */
-article {
-  max-width: 48rem;
-  margin: 0 auto;
-}
-
-/* (keeping existing article styles mostly as is) */
-article h1 {
-  font-size: 2.25rem;
-  color: rgb(41 37 36);
-  margin-bottom: 1.5rem;
-}
-
-article h2 {
-  font-size: 1.5rem;
-  color: rgb(41 37 36);
-  margin-top: 3rem;
-  margin-bottom: 1rem;
-}
-
-article p {
-  font-size: 1.125rem;
-  color: rgb(68 64 60);
-  margin-bottom: 1.5rem;
-  line-height: 1.75;
-}
-
-article blockquote {
-  border-left: 4px solid rgb(16 185 129);
-  padding-left: 1.5rem;
-  margin: 2rem 0;
-  font-style: italic;
-  color: rgb(87 83 78);
-}
-
-article a {
-  color: rgb(5 150 105);
-  text-decoration: underline;
-}
-
-article a:hover {
-  color: rgb(4 120 87);
-}
-
+/* Scrollbar hidden (native feel) */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: rgb(209 213 219);
-  border-radius: 9999px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: rgb(156 163 175);
+  width: 0px;
+  background: transparent;
 }

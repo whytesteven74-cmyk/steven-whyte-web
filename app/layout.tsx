@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
+import { Playfair_Display } from "next/font/google";
 import "./globals.css";
+
+const playfair = Playfair_Display({
+    subsets: ["latin"],
+    variable: "--font-playfair",
+    display: "swap",
+});
 import { NavBar } from "@/components/NavBar";
 import SmoothScroll from "@/components/SmoothScroll";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
@@ -18,7 +25,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable} scroll-smooth`}>
+        <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable} ${playfair.variable} scroll-smooth`}>
             <body className="bg-mint text-charcoal min-h-screen antialiased font-sans overflow-x-hidden selection:bg-emerald-200 selection:text-emerald-900 transition-colors duration-500">
                 <SmoothScroll>
                     <CursorGlow />
