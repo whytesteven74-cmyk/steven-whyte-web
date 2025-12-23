@@ -2,252 +2,295 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Heart, BookOpen, Compass, Sunrise, MessageCircle, Users, TrendingUp, Sparkles, Play } from "lucide-react";
-
-// Modern Components
-import { Button } from "@/components/ui/Button";
-import { Card, FeatureCard, StatCard, TestimonialCard, StoryCard } from "@/components/ui/Card";
-import { Section, SectionHeader, Grid, Hero } from "@/components/ui/Section";
+import { ChevronDown, Heart, Footprints, Sunrise, ArrowRight, Mail, MapPin } from "lucide-react";
 
 // ============================================
-// PAGE DATA
-// ============================================
-
-const features = [
-    {
-        icon: <Sunrise className="w-6 h-6" />,
-        title: "Healing Journey",
-        description: "Finding light in the darkest moments through vulnerability and authentic self-discovery.",
-    },
-    {
-        icon: <BookOpen className="w-6 h-6" />,
-        title: "Unspoken Stories",
-        description: "Sharing the truths we carry inside but are often too afraid to voice.",
-    },
-    {
-        icon: <Compass className="w-6 h-6" />,
-        title: "New Beginnings",
-        description: "Every ending is a doorway to something beautiful and transformative.",
-    },
-];
-
-const stories = [
-    { title: "The Weight of Silence", location: "United Kingdom", date: "2023", gradient: "from-emerald-500 to-teal-500" },
-    { title: "Finding My Voice", location: "France", date: "2022", gradient: "from-sky-500 to-indigo-500" },
-    { title: "Breaking Free", location: "Germany", date: "2021", gradient: "from-amber-500 to-orange-500" },
-];
-
-const testimonials = [
-    { quote: "Steven's story touched my heart. His honesty about mental health struggles is so important.", author: "Sarah M.", role: "Community Member" },
-    { quote: "Finding this community has been life-changing. You're not alone in your journey.", author: "James T.", role: "Mental Health Advocate" },
-    { quote: "The power of sharing our stories cannot be underestimated. Thank you for your courage.", author: "Emma L.", role: "Therapist" },
-];
-
-const stats = [
-    { icon: <Users className="w-6 h-6" />, value: "10K+", label: "Lives Touched" },
-    { icon: <BookOpen className="w-6 h-6" />, value: "126", label: "Stories Shared" },
-    { icon: <Heart className="w-6 h-6" />, value: "50+", label: "Communities" },
-    { icon: <TrendingUp className="w-6 h-6" />, value: "3", label: "Countries" },
-];
-
-// ============================================
-// HOME PAGE COMPONENT
+// FIGMA SAGE GREEN HOMEPAGE
 // ============================================
 
 export default function Home() {
+    const scrollToContent = () => {
+        const element = document.getElementById("story");
+        element?.scrollIntoView({ behavior: "smooth" });
+    };
+
     return (
-        <main className="overflow-hidden">
+        <main className="min-h-screen bg-white">
             {/* ===== HERO SECTION ===== */}
-            <Hero
-                label="Mental Health Advocate • Author • Coach"
-                title={
-                    <>
-                        Breaking the{" "}
-                        <span className="text-gradient">Silence.</span>
-                    </>
-                }
-                subtitle="Breaking the silence around men's mental health, one unspoken truth at a time."
-            >
-                <Link href="/story">
-                    <Button variant="gradient" size="lg" icon={<ArrowRight className="w-5 h-5" />}>
-                        Read My Story
-                    </Button>
-                </Link>
-                <Link href="/archive">
-                    <Button variant="secondary" size="lg" icon={<Play className="w-5 h-5" />}>
-                        Watch Videos
-                    </Button>
-                </Link>
-            </Hero>
+            <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-hero-sage">
+                {/* Soft Background Blur Circles */}
+                <div className="absolute inset-0 opacity-40">
+                    <div className="blur-circle top-20 left-10 w-64 h-64 bg-emerald-300"></div>
+                    <div className="blur-circle bottom-20 right-10 w-96 h-96 bg-green-300"></div>
+                    <div className="blur-circle top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-teal-300"></div>
+                </div>
 
-            {/* ===== FEATURES / PILLARS ===== */}
-            <Section variant="subtle" size="lg">
-                <SectionHeader
-                    label="The Path I Walked"
-                    title="Three Pillars of My Journey"
-                    subtitle="Every step has been a lesson, every struggle a stepping stone toward helping others."
-                />
-                <Grid cols={3} gap="lg">
-                    {features.map((feature, i) => (
-                        <FeatureCard
-                            key={i}
-                            icon={feature.icon}
-                            title={feature.title}
-                            description={feature.description}
-                        />
-                    ))}
-                </Grid>
-            </Section>
-
-            {/* ===== STORY CARDS ===== */}
-            <Section variant="default" size="lg">
-                <SectionHeader
-                    label="My Travel Stories"
-                    title="Places That Shaped Me"
-                    subtitle="Each destination brought new perspectives and deeper understanding."
-                />
-                <Grid cols={3} gap="md">
-                    {stories.map((story, i) => (
-                        <StoryCard
-                            key={i}
-                            title={story.title}
-                            location={story.location}
-                            date={story.date}
-                            gradient={story.gradient}
-                        />
-                    ))}
-                </Grid>
-            </Section>
-
-            {/* ===== TESTIMONIALS ===== */}
-            <Section variant="gradient" size="lg">
-                <SectionHeader
-                    label="Voices of Support"
-                    title="What People Are Saying"
-                    subtitle="The impact of sharing our stories ripples outward in unexpected ways."
-                />
-                <Grid cols={3} gap="md">
-                    {testimonials.map((testimonial, i) => (
-                        <TestimonialCard
-                            key={i}
-                            quote={testimonial.quote}
-                            author={testimonial.author}
-                            role={testimonial.role}
-                        />
-                    ))}
-                </Grid>
-            </Section>
-
-            {/* ===== CTA SECTION ===== */}
-            <Section variant="dark" size="lg">
-                <motion.div
-                    className="text-center max-w-3xl mx-auto"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                >
-                    <div className="inline-flex items-center gap-2 bg-emerald-500/20 text-emerald-400 px-4 py-2 rounded-full text-sm font-medium mb-6">
-                        <Sparkles className="w-4 h-4" />
-                        Coming Soon
-                    </div>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-                        The{" "}
-                        <span className="bg-gradient-to-r from-emerald-400 to-sky-400 bg-clip-text text-transparent">
-                            Unspoken
-                        </span>{" "}
-                        Platform
-                    </h2>
-                    <p className="text-xl text-gray-400 mb-10 leading-relaxed">
-                        A safe space for men to share their stories, find support, and discover they're not alone in their struggles.
-                    </p>
-                    <div className="flex flex-wrap justify-center gap-4">
-                        <Link href="/unspoken">
-                            <Button variant="gradient" size="lg">
-                                Learn More
-                            </Button>
-                        </Link>
-                        <Link href="/contact">
-                            <Button variant="outline" size="lg" className="border-emerald-500 text-emerald-400 hover:bg-emerald-500/10">
-                                Get Notified
-                            </Button>
-                        </Link>
-                    </div>
-                </motion.div>
-            </Section>
-
-            {/* ===== STATS SECTION ===== */}
-            <Section variant="default" size="md">
-                <Grid cols={4} gap="md">
-                    {stats.map((stat, i) => (
-                        <StatCard
-                            key={i}
-                            icon={stat.icon}
-                            value={stat.value}
-                            label={stat.label}
-                        />
-                    ))}
-                </Grid>
-            </Section>
-
-            {/* ===== FOOTER ===== */}
-            <footer className="bg-gray-950 text-white py-16 px-6">
-                <div className="max-w-7xl mx-auto">
-                    <div className="grid md:grid-cols-4 gap-12 mb-12">
-                        {/* Brand */}
-                        <div className="md:col-span-2">
-                            <div className="flex items-center gap-3 mb-4">
-                                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-sky-500 flex items-center justify-center">
-                                    <Heart className="w-5 h-5 text-white" />
-                                </div>
-                                <span className="text-xl font-bold">Steven Whyte</span>
-                            </div>
-                            <p className="text-gray-400 max-w-md leading-relaxed">
-                                Breaking the silence around men's mental health. Author, advocate, and founder of the Unspoken movement.
-                            </p>
+                {/* Content */}
+                <div className="relative z-10 text-center px-4 max-w-4xl mx-auto py-32">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, ease: "easeOut" }}
+                        className="space-y-8"
+                    >
+                        <div className="inline-block mb-4">
+                            <span className="text-sm tracking-widest text-emerald-600 uppercase font-semibold">
+                                A Journey of Hope
+                            </span>
                         </div>
 
-                        {/* Links */}
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl text-stone-900 mb-6 leading-relaxed font-medium">
+                            You Are Not Alone in Your Healing
+                        </h1>
+
+                        <p className="text-stone-700 text-xl md:text-2xl mb-8 max-w-2xl mx-auto leading-relaxed">
+                            If you're feeling trapped by trauma or struggling with mental health,
+                            this is a gentle reminder that healing is possible. Nature is waiting.
+                            Hope is real.
+                        </p>
+
+                        <div className="flex gap-4 justify-center flex-wrap">
+                            <button
+                                onClick={scrollToContent}
+                                className="btn-primary-sage"
+                            >
+                                Begin the Journey
+                            </button>
+                            <Link href="/story" className="btn-outline-sage">
+                                Read Stories of Hope
+                            </Link>
+                        </div>
+                    </motion.div>
+                </div>
+
+                {/* Scroll Indicator */}
+                <motion.div
+                    className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 cursor-pointer"
+                    onClick={scrollToContent}
+                    animate={{ y: [0, 10, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                >
+                    <ChevronDown className="w-8 h-8 text-emerald-600" />
+                </motion.div>
+            </section>
+
+            {/* ===== STORY SECTION ===== */}
+            <section id="story" className="py-20 px-4 bg-section-sage">
+                <div className="max-w-5xl mx-auto">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="text-center mb-16"
+                    >
+                        <h2 className="text-3xl md:text-4xl text-stone-800 mb-6 font-medium">My Story</h2>
+                        <p className="text-xl text-stone-700 max-w-3xl mx-auto leading-relaxed">
+                            A journey that began with pain transformed into a path of hope,
+                            connection, and gentle healing.
+                        </p>
+                    </motion.div>
+
+                    {/* Two Column Story */}
+                    <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
+                        <motion.div
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                        >
+                            <img
+                                src="https://images.unsplash.com/photo-1728125771015-68c44a4819cc?w=800"
+                                alt="Healing journey through nature"
+                                className="rounded-3xl shadow-xl w-full"
+                            />
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, x: 20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                            className="space-y-6"
+                        >
+                            <p className="text-stone-700 leading-relaxed">
+                                I know what it feels like to be trapped. Childhood trauma left wounds that felt
+                                impossible to heal. Traditional paths didn't work for me, so I chose something different—
+                                walking, moving, being in nature.
+                            </p>
+                            <p className="text-stone-700 leading-relaxed">
+                                Along the way, I met incredible people who shared their stories with me.
+                                People who were also navigating pain, finding their own paths to healing.
+                                Their courage inspired me to share this journey with you.
+                            </p>
+                            <p className="text-stone-700 leading-relaxed">
+                                If you're reading this and feeling stuck, please know—there is hope.
+                                Healing doesn't always look the way we expect. Sometimes it's as simple
+                                as taking a walk outside, breathing fresh air, and remembering you're not alone.
+                            </p>
+                        </motion.div>
+                    </div>
+
+                    {/* Three Pillars */}
+                    <div className="grid md:grid-cols-3 gap-8">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: 0.1 }}
+                            className="text-center p-8 card-glass"
+                        >
+                            <div className="icon-circle-emerald mb-6 mx-auto">
+                                <Heart className="w-10 h-10 text-emerald-700" />
+                            </div>
+                            <h3 className="mb-3 text-emerald-800 text-xl font-medium">Gentle Healing</h3>
+                            <p className="text-stone-600 leading-relaxed">
+                                Finding peace through nature, movement, and self-compassion
+                            </p>
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                            className="text-center p-8 card-glass-green"
+                        >
+                            <div className="icon-circle-green mb-6 mx-auto">
+                                <Footprints className="w-10 h-10 text-green-700" />
+                            </div>
+                            <h3 className="mb-3 text-green-800 text-xl font-medium">Shared Stories</h3>
+                            <p className="text-stone-600 leading-relaxed">
+                                Listening to and learning from others on similar journeys
+                            </p>
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: 0.3 }}
+                            className="text-center p-8 card-glass-teal"
+                        >
+                            <div className="icon-circle-teal mb-6 mx-auto">
+                                <Sunrise className="w-10 h-10 text-teal-700" />
+                            </div>
+                            <h3 className="mb-3 text-teal-800 text-xl font-medium">New Beginnings</h3>
+                            <p className="text-stone-600 leading-relaxed">
+                                Every day is a fresh start, a chance to try again
+                            </p>
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
+
+            {/* ===== CTA SECTION ===== */}
+            <section className="py-20 px-4 bg-white">
+                <div className="max-w-4xl mx-auto text-center">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <h2 className="text-3xl md:text-4xl text-stone-800 mb-6 font-medium">
+                            Continue the Journey
+                        </h2>
+                        <p className="text-xl text-stone-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+                            Explore more stories, connect with the community, and discover
+                            resources for your own healing path.
+                        </p>
+                        <div className="flex gap-4 justify-center flex-wrap">
+                            <Link href="/story" className="btn-primary-sage inline-flex items-center gap-2">
+                                Read My Full Story
+                                <ArrowRight className="w-5 h-5" />
+                            </Link>
+                            <Link href="/archive" className="btn-outline-sage">
+                                Browse Archive
+                            </Link>
+                        </div>
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* ===== FOOTER ===== */}
+            <footer className="bg-footer-sage py-16 px-4 border-t-4 border-emerald-300">
+                <div className="max-w-6xl mx-auto">
+                    <div className="grid md:grid-cols-3 gap-12 mb-12">
+                        {/* About */}
                         <div>
-                            <h4 className="font-semibold mb-4 text-gray-100">Navigation</h4>
-                            <ul className="space-y-3">
-                                {["Story", "Archive", "Contact", "Media Kit"].map((link) => (
-                                    <li key={link}>
-                                        <Link href={`/${link.toLowerCase().replace(" ", "-")}`} className="text-gray-400 hover:text-emerald-400 transition-colors">
-                                            {link}
+                            <h3 className="text-stone-700 mb-4 text-lg font-medium">A Message of Hope</h3>
+                            <p className="text-stone-600 mb-4 leading-relaxed">
+                                This journey is for anyone feeling lost, stuck, or struggling.
+                                You deserve healing. You deserve peace. You deserve to know you're not alone.
+                            </p>
+                            <div className="flex items-center gap-2 text-stone-600">
+                                <Heart className="w-4 h-4 text-green-500" />
+                                <span>Made with love and hope</span>
+                            </div>
+                        </div>
+
+                        {/* Quick Links */}
+                        <div>
+                            <h3 className="text-stone-700 mb-4 text-lg font-medium">Explore</h3>
+                            <ul className="space-y-2">
+                                {[
+                                    { href: "/story", label: "My Story" },
+                                    { href: "/archive", label: "Archive" },
+                                    { href: "/contact", label: "Contact" },
+                                    { href: "/media-kit", label: "Media Kit" },
+                                ].map((link) => (
+                                    <li key={link.href}>
+                                        <Link
+                                            href={link.href}
+                                            className="text-stone-600 hover:text-green-600 transition-colors"
+                                        >
+                                            {link.label}
                                         </Link>
                                     </li>
                                 ))}
                             </ul>
                         </div>
 
-                        {/* Social */}
+                        {/* Connect */}
                         <div>
-                            <h4 className="font-semibold mb-4 text-gray-100">Connect</h4>
-                            <ul className="space-y-3">
-                                {[
-                                    { name: "Instagram", url: "https://instagram.com/unspoken1979" },
-                                    { name: "TikTok", url: "https://tiktok.com/@stevewhyte171" },
-                                    { name: "LinkedIn", url: "#" },
-                                ].map((social) => (
-                                    <li key={social.name}>
-                                        <a href={social.url} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-emerald-400 transition-colors">
-                                            {social.name}
+                            <h3 className="text-stone-700 mb-4 text-lg font-medium">Connect</h3>
+                            <p className="text-stone-600 mb-4 leading-relaxed">
+                                Want to share your story or journey? I'd love to hear from you.
+                            </p>
+                            <div className="space-y-3">
+                                <div className="flex items-start gap-2 text-stone-600">
+                                    <Mail className="w-5 h-5 text-green-500 mt-0.5" />
+                                    <div>
+                                        <p className="text-sm text-stone-500">Reach out</p>
+                                        <a
+                                            href="mailto:hello@stevenwhyte.co.uk"
+                                            className="hover:text-green-600 transition-colors"
+                                        >
+                                            hello@stevenwhyte.co.uk
                                         </a>
-                                    </li>
-                                ))}
-                            </ul>
+                                    </div>
+                                </div>
+                                <div className="flex items-start gap-2 text-stone-600">
+                                    <MapPin className="w-5 h-5 text-green-500 mt-0.5" />
+                                    <div>
+                                        <p className="text-sm text-stone-500">Currently wandering</p>
+                                        <p>Somewhere in Europe 🌍</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     {/* Bottom */}
-                    <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
-                        <p className="text-gray-500 text-sm">
-                            © {new Date().getFullYear()} Steven Whyte. All rights reserved.
-                        </p>
-                        <div className="flex gap-6 text-sm text-gray-500">
-                            <Link href="/privacy" className="hover:text-gray-300 transition-colors">Privacy Policy</Link>
-                            <Link href="/terms" className="hover:text-gray-300 transition-colors">Terms of Service</Link>
+                    <div className="pt-8 border-t border-green-200">
+                        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+                            <p className="text-stone-500 text-sm">
+                                © {new Date().getFullYear()} Steven Whyte. All stories shared with consent and respect.
+                            </p>
+                            <p className="text-stone-500 text-sm">
+                                If you're in crisis, please reach out for professional help. You matter. 💚
+                            </p>
                         </div>
                     </div>
                 </div>

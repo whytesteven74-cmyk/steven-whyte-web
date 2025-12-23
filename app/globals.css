@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 /* ============================================
-   BASE STYLES - Using standard CSS
+   SAGE GREEN FIGMA THEME
+   Calm, nature-inspired palette for healing
    ============================================ */
+
 :root {
-  --color-primary: 16 185 129;
-  --color-secondary: 14 165 233;
-  --color-background: 250 250 250;
-  --color-foreground: 23 23 23;
+  --background: #ffffff;
+  --foreground: #1c1917;
 }
 
 html {
@@ -20,10 +20,8 @@ html {
 
 body {
   background-color: white;
-  color: rgb(17 24 39);
-  /* gray-900 */
-  transition-property: color, background-color;
-  transition-duration: 300ms;
+  color: rgb(68 64 60);
+  /* stone-600 */
   font-feature-settings: "rlig" 1, "calt" 1;
 }
 
@@ -34,21 +32,38 @@ body {
   /* emerald-900 */
 }
 
-/* Typography base */
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  color: rgb(17 24 39);
-  /* gray-900 */
+  font-weight: 500;
+  line-height: 1.5;
+  color: rgb(41 37 36);
+  /* stone-800 */
+}
+
+h1 {
+  font-size: 2.25rem;
+}
+
+h2 {
+  font-size: 1.875rem;
+}
+
+h3 {
+  font-size: 1.25rem;
 }
 
 p {
-  line-height: 1.625;
+  line-height: 1.75;
+  color: rgb(68 64 60);
+  /* stone-600 */
 }
 
 a {
@@ -56,159 +71,170 @@ a {
 }
 
 /* ============================================
-   MODERN UTILITIES
+   GLASSMORPHIC CARDS
    ============================================ */
 
-/* Gradient Text */
-.text-gradient {
-  background: linear-gradient(to right, rgb(16 185 129), rgb(14 165 233));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+.card-glass {
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border: 2px solid rgb(167 243 208);
+  /* emerald-200 */
 }
 
-.text-gradient-warm {
-  background: linear-gradient(to right, rgb(245 158 11), rgb(244 63 94));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+.card-glass-green {
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border: 2px solid rgb(187 247 208);
+  /* green-200 */
 }
 
-/* Glass Effects */
-.glass {
-  background-color: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+.card-glass-teal {
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border: 2px solid rgb(153 246 228);
+  /* teal-200 */
 }
 
-.glass-dark {
-  background-color: rgba(17, 24, 39, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+/* ============================================
+   GRADIENT BACKGROUNDS
+   ============================================ */
+
+.bg-hero-sage {
+  background: linear-gradient(to bottom right, rgb(209 250 229), rgb(240 253 244), rgb(240 253 250));
+  /* emerald-100 → green-50 → teal-50 */
 }
 
-/* Modern Shadows */
-.shadow-glow {
-  box-shadow: 0 0 40px -10px rgba(16, 185, 129, 0.3);
+.bg-section-sage {
+  background: linear-gradient(to bottom, rgb(240 253 250), rgb(209 250 229), rgb(220 252 231));
+  /* teal-50 → emerald-100 → green-100 */
 }
 
-.shadow-glow-lg {
-  box-shadow: 0 0 60px -15px rgba(16, 185, 129, 0.4);
+.bg-footer-sage {
+  background: linear-gradient(to bottom, rgb(209 250 229), rgb(220 252 231), rgb(204 251 241));
+  /* emerald-100 → green-100 → teal-100 */
 }
 
-.shadow-soft {
-  box-shadow:
-    0 4px 6px -1px rgba(0, 0, 0, 0.05),
-    0 2px 4px -1px rgba(0, 0, 0, 0.03);
+/* ============================================
+   ICON CONTAINERS
+   ============================================ */
+
+.icon-circle-emerald {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 9999px;
+  background: linear-gradient(to bottom right, rgb(110 231 183), rgb(167 243 208));
+  /* emerald-300 → emerald-200 */
 }
 
-.shadow-elevation {
-  box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.04),
-    0 4px 8px rgba(0, 0, 0, 0.04),
-    0 16px 32px rgba(0, 0, 0, 0.04);
+.icon-circle-green {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 9999px;
+  background: linear-gradient(to bottom right, rgb(134 239 172), rgb(187 247 208));
+  /* green-300 → green-200 */
 }
 
-/* Gradient Backgrounds */
-.bg-gradient-radial {
-  background: radial-gradient(ellipse at center, var(--tw-gradient-stops));
+.icon-circle-teal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 9999px;
+  background: linear-gradient(to bottom right, rgb(94 234 212), rgb(153 246 228));
+  /* teal-300 → teal-200 */
 }
 
-.bg-dots {
-  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
-  background-size: 24px 24px;
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.btn-primary-sage {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 2rem;
+  font-weight: 500;
+  color: white;
+  background: linear-gradient(to right, rgb(16 185 129), rgb(34 197 94));
+  /* emerald-500 → green-500 */
+  border-radius: 9999px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: all 200ms;
 }
 
-.bg-grid {
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
-  background-size: 4rem 4rem;
+.btn-primary-sage:hover {
+  background: linear-gradient(to right, rgb(5 150 105), rgb(22 163 74));
+  /* emerald-600 → green-600 */
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
-/* Animated Gradient Border */
-.border-gradient {
-  position: relative;
+.btn-outline-sage {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 2rem;
+  font-weight: 500;
+  color: rgb(41 37 36);
+  /* stone-800 */
+  background: transparent;
+  border: 2px solid rgb(16 185 129);
+  /* emerald-500 */
+  border-radius: 9999px;
+  transition: all 200ms;
 }
 
-.border-gradient::before {
-  content: '';
+.btn-outline-sage:hover {
+  background-color: rgb(236 253 245);
+  /* emerald-50 */
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+
+.nav-scrolled {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.nav-transparent {
+  background: linear-gradient(to bottom, rgba(220, 252, 231, 0.8), transparent);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* ============================================
+   BLUR DECORATIONS
+   ============================================ */
+
+.blur-circle {
   position: absolute;
-  inset: 0;
-  padding: 2px;
-  border-radius: inherit;
-  background: linear-gradient(135deg, #10b981, #0ea5e9);
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-}
-
-/* Hover Effects */
-.hover-lift {
-  transition: transform 300ms;
-}
-
-.hover-lift:hover {
-  transform: translateY(-4px);
-}
-
-.hover-scale {
-  transition: transform 300ms;
-}
-
-.hover-scale:hover {
-  transform: scale(1.02);
-}
-
-/* Animations */
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-pulse-slow {
-  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-.animate-gradient {
-  animation: gradient 8s ease infinite;
-  background-size: 200% 200%;
-}
-
-@keyframes float {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
+  border-radius: 9999px;
+  filter: blur(48px);
 }
 
 /* ============================================
    ARTICLE / MDX STYLES
    ============================================ */
+
 article {
   max-width: 48rem;
   margin-left: auto;
@@ -217,146 +243,62 @@ article {
 
 article h1 {
   font-size: 2.25rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
-  margin-top: 0;
-}
-
-@media (min-width: 768px) {
-  article h1 {
-    font-size: 3rem;
-  }
+  color: rgb(41 37 36);
+  margin-bottom: 1.5rem;
 }
 
 article h2 {
   font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  margin-top: 4rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid rgb(243 244 246);
-}
-
-@media (min-width: 768px) {
-  article h2 {
-    font-size: 1.875rem;
-  }
-}
-
-article h3 {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
+  color: rgb(41 37 36);
   margin-top: 3rem;
+  margin-bottom: 1rem;
 }
 
 article p {
   font-size: 1.125rem;
-  color: rgb(75 85 99);
-  /* gray-600 */
+  color: rgb(68 64 60);
   margin-bottom: 1.5rem;
   line-height: 1.75;
 }
 
 article blockquote {
   border-left: 4px solid rgb(16 185 129);
-  /* emerald-500 */
   padding-left: 1.5rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  background-color: rgba(236, 253, 245, 0.5);
-  /* emerald-50/50 */
-  border-radius: 0 0.75rem 0.75rem 0;
+  margin: 2rem 0;
   font-style: italic;
-  color: rgb(55 65 81);
-  /* gray-700 */
+  color: rgb(87 83 78);
 }
 
 article a {
-  color: rgb(4 120 87);
-  /* emerald-700 */
+  color: rgb(5 150 105);
   text-decoration: underline;
-  text-decoration-color: rgb(167 243 208);
-  /* emerald-300 */
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
-  transition: color 200ms;
 }
 
 article a:hover {
-  color: rgb(5 150 105);
-  /* emerald-600 */
-}
-
-article ul,
-article ol {
-  margin-bottom: 1.5rem;
-  padding-left: 1.5rem;
-}
-
-article li {
-  font-size: 1.125rem;
-  color: rgb(75 85 99);
-  margin-bottom: 0.5rem;
-}
-
-article hr {
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-  border-color: rgb(229 231 235);
-  /* gray-200 */
-}
-
-article code {
-  background-color: rgb(243 244 246);
-  /* gray-100 */
-  padding: 0.125rem 0.5rem;
-  border-radius: 0.25rem;
-  font-size: 0.875rem;
-  font-family: ui-monospace, SFMono-Regular, monospace;
-  color: rgb(31 41 55);
-  /* gray-800 */
-}
-
-article pre {
-  background-color: rgb(17 24 39);
-  /* gray-900 */
-  color: rgb(243 244 246);
-  /* gray-100 */
-  padding: 1.5rem;
-  border-radius: 1rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  overflow-x: auto;
-}
-
-article pre code {
-  background-color: transparent;
-  padding: 0;
+  color: rgb(4 120 87);
 }
 
 /* ============================================
    SCROLLBAR
    ============================================ */
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: rgb(243 244 246);
-  /* gray-100 */
+  background-color: rgb(240 253 244);
+  /* green-50 */
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgb(209 213 219);
-  /* gray-300 */
+  background-color: rgb(167 243 208);
+  /* emerald-200 */
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: rgb(156 163 175);
-  /* gray-400 */
+  background-color: rgb(110 231 183);
+  /* emerald-300 */
 }
