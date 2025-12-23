@@ -1,253 +1,255 @@
-
 "use client";
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Heart, BookOpen, Compass, Sunrise, MessageCircle, Users, TrendingUp } from "lucide-react";
+import { ArrowRight, Heart, BookOpen, Compass, Sunrise, MessageCircle, Users, TrendingUp, Sparkles, Play } from "lucide-react";
 
-const fadeInUp = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
-};
+// Modern Components
+import { Button } from "@/components/ui/Button";
+import { Card, FeatureCard, StatCard, TestimonialCard, StoryCard } from "@/components/ui/Card";
+import { Section, SectionHeader, Grid, Hero } from "@/components/ui/Section";
 
-const stagger = {
-    visible: { transition: { staggerChildren: 0.15 } }
-};
+// ============================================
+// PAGE DATA
+// ============================================
+
+const features = [
+    {
+        icon: <Sunrise className="w-6 h-6" />,
+        title: "Healing Journey",
+        description: "Finding light in the darkest moments through vulnerability and authentic self-discovery.",
+    },
+    {
+        icon: <BookOpen className="w-6 h-6" />,
+        title: "Unspoken Stories",
+        description: "Sharing the truths we carry inside but are often too afraid to voice.",
+    },
+    {
+        icon: <Compass className="w-6 h-6" />,
+        title: "New Beginnings",
+        description: "Every ending is a doorway to something beautiful and transformative.",
+    },
+];
+
+const stories = [
+    { title: "The Weight of Silence", location: "United Kingdom", date: "2023", gradient: "from-emerald-500 to-teal-500" },
+    { title: "Finding My Voice", location: "France", date: "2022", gradient: "from-sky-500 to-indigo-500" },
+    { title: "Breaking Free", location: "Germany", date: "2021", gradient: "from-amber-500 to-orange-500" },
+];
+
+const testimonials = [
+    { quote: "Steven's story touched my heart. His honesty about mental health struggles is so important.", author: "Sarah M.", role: "Community Member" },
+    { quote: "Finding this community has been life-changing. You're not alone in your journey.", author: "James T.", role: "Mental Health Advocate" },
+    { quote: "The power of sharing our stories cannot be underestimated. Thank you for your courage.", author: "Emma L.", role: "Therapist" },
+];
+
+const stats = [
+    { icon: <Users className="w-6 h-6" />, value: "10K+", label: "Lives Touched" },
+    { icon: <BookOpen className="w-6 h-6" />, value: "126", label: "Stories Shared" },
+    { icon: <Heart className="w-6 h-6" />, value: "50+", label: "Communities" },
+    { icon: <TrendingUp className="w-6 h-6" />, value: "3", label: "Countries" },
+];
+
+// ============================================
+// HOME PAGE COMPONENT
+// ============================================
 
 export default function Home() {
     return (
-        <main className="min-h-screen bg-mint text-charcoal overflow-hidden">
+        <main className="overflow-hidden">
+            {/* ===== HERO SECTION ===== */}
+            <Hero
+                label="Mental Health Advocate • Author • Coach"
+                title={
+                    <>
+                        Breaking the{" "}
+                        <span className="text-gradient">Silence.</span>
+                    </>
+                }
+                subtitle="Breaking the silence around men's mental health, one unspoken truth at a time."
+            >
+                <Link href="/story">
+                    <Button variant="gradient" size="lg" icon={<ArrowRight className="w-5 h-5" />}>
+                        Read My Story
+                    </Button>
+                </Link>
+                <Link href="/archive">
+                    <Button variant="secondary" size="lg" icon={<Play className="w-5 h-5" />}>
+                        Watch Videos
+                    </Button>
+                </Link>
+            </Hero>
 
-            {/* Hero Section - Figma Style */}
-            <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-32">
-                {/* Soft Gradient Background */}
-                <div className="absolute inset-0 bg-hero-gradient opacity-60" />
+            {/* ===== FEATURES / PILLARS ===== */}
+            <Section variant="subtle" size="lg">
+                <SectionHeader
+                    label="The Path I Walked"
+                    title="Three Pillars of My Journey"
+                    subtitle="Every step has been a lesson, every struggle a stepping stone toward helping others."
+                />
+                <Grid cols={3} gap="lg">
+                    {features.map((feature, i) => (
+                        <FeatureCard
+                            key={i}
+                            icon={feature.icon}
+                            title={feature.title}
+                            description={feature.description}
+                        />
+                    ))}
+                </Grid>
+            </Section>
 
+            {/* ===== STORY CARDS ===== */}
+            <Section variant="default" size="lg">
+                <SectionHeader
+                    label="My Travel Stories"
+                    title="Places That Shaped Me"
+                    subtitle="Each destination brought new perspectives and deeper understanding."
+                />
+                <Grid cols={3} gap="md">
+                    {stories.map((story, i) => (
+                        <StoryCard
+                            key={i}
+                            title={story.title}
+                            location={story.location}
+                            date={story.date}
+                            gradient={story.gradient}
+                        />
+                    ))}
+                </Grid>
+            </Section>
+
+            {/* ===== TESTIMONIALS ===== */}
+            <Section variant="gradient" size="lg">
+                <SectionHeader
+                    label="Voices of Support"
+                    title="What People Are Saying"
+                    subtitle="The impact of sharing our stories ripples outward in unexpected ways."
+                />
+                <Grid cols={3} gap="md">
+                    {testimonials.map((testimonial, i) => (
+                        <TestimonialCard
+                            key={i}
+                            quote={testimonial.quote}
+                            author={testimonial.author}
+                            role={testimonial.role}
+                        />
+                    ))}
+                </Grid>
+            </Section>
+
+            {/* ===== CTA SECTION ===== */}
+            <Section variant="dark" size="lg">
                 <motion.div
-                    initial="hidden"
-                    animate="visible"
-                    variants={stagger}
-                    className="relative z-10 text-center max-w-4xl mx-auto"
+                    className="text-center max-w-3xl mx-auto"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 >
-                    {/* Section Label */}
-                    <motion.span
-                        variants={fadeInUp}
-                        className="section-label inline-flex items-center gap-2"
-                    >
-                        <Heart className="w-3 h-3 text-emerald-500" />
-                        Mental Health Advocate | Author | Coach
-                    </motion.span>
-
-                    {/* Main Headline */}
-                    <motion.h1
-                        variants={fadeInUp}
-                        className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-charcoal-800 mb-6 leading-[0.9]"
-                    >
-                        Breaking the
-                        <br />
-                        <span className="text-emerald-700">Silence.</span>
-                    </motion.h1>
-
-                    {/* Subheadline */}
-                    <motion.p
-                        variants={fadeInUp}
-                        className="text-xl md:text-2xl text-charcoal-500 max-w-2xl mx-auto mb-12 leading-relaxed"
-                    >
-                        "Breaking the silence around men's mental health, one unspoken truth at a time."
-                    </motion.p>
-
-                    {/* CTA Buttons */}
-                    <motion.div
-                        variants={fadeInUp}
-                        className="flex flex-wrap items-center justify-center gap-4"
-                    >
-                        <Link href="/story" className="btn-primary inline-flex items-center gap-2">
-                            Read My Story <ArrowRight className="w-4 h-4" />
+                    <div className="inline-flex items-center gap-2 bg-emerald-500/20 text-emerald-400 px-4 py-2 rounded-full text-sm font-medium mb-6">
+                        <Sparkles className="w-4 h-4" />
+                        Coming Soon
+                    </div>
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                        The{" "}
+                        <span className="bg-gradient-to-r from-emerald-400 to-sky-400 bg-clip-text text-transparent">
+                            Unspoken
+                        </span>{" "}
+                        Platform
+                    </h2>
+                    <p className="text-xl text-gray-400 mb-10 leading-relaxed">
+                        A safe space for men to share their stories, find support, and discover they're not alone in their struggles.
+                    </p>
+                    <div className="flex flex-wrap justify-center gap-4">
+                        <Link href="/unspoken">
+                            <Button variant="gradient" size="lg">
+                                Learn More
+                            </Button>
                         </Link>
-                        <Link href="/archive" className="btn-secondary">
-                            Explore Archive
+                        <Link href="/contact">
+                            <Button variant="outline" size="lg" className="border-emerald-500 text-emerald-400 hover:bg-emerald-500/10">
+                                Get Notified
+                            </Button>
                         </Link>
-                    </motion.div>
+                    </div>
                 </motion.div>
-            </section>
+            </Section>
 
-            {/* Path Section - 3 Pillars */}
-            <section className="py-24 px-6 bg-white">
-                <div className="max-w-6xl mx-auto">
-                    <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        variants={stagger}
-                        className="text-center mb-16"
-                    >
-                        <motion.span variants={fadeInUp} className="section-label">The Path I Walked</motion.span>
-                        <motion.h2 variants={fadeInUp} className="text-4xl md:text-5xl font-bold text-charcoal-800">
-                            Three Pillars of My Journey
-                        </motion.h2>
-                    </motion.div>
+            {/* ===== STATS SECTION ===== */}
+            <Section variant="default" size="md">
+                <Grid cols={4} gap="md">
+                    {stats.map((stat, i) => (
+                        <StatCard
+                            key={i}
+                            icon={stat.icon}
+                            value={stat.value}
+                            label={stat.label}
+                        />
+                    ))}
+                </Grid>
+            </Section>
 
-                    <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        variants={stagger}
-                        className="grid md:grid-cols-3 gap-8"
-                    >
-                        {[
-                            { icon: Sunrise, title: "Healing", desc: "Finding light in the darkest moments through nature and self-discovery." },
-                            { icon: BookOpen, title: "Stories", desc: "Sharing the unspoken truths that connect us all as humans." },
-                            { icon: Compass, title: "New Beginnings", desc: "Every ending is a doorway to something beautiful and new." },
-                        ].map((item, i) => (
-                            <motion.div
-                                key={i}
-                                variants={fadeInUp}
-                                className="card text-center group"
-                            >
-                                <div className="w-16 h-16 rounded-full bg-emerald-50 flex items-center justify-center mx-auto mb-6 group-hover:bg-emerald-100 transition-colors">
-                                    <item.icon className="w-7 h-7 text-emerald-600" />
+            {/* ===== FOOTER ===== */}
+            <footer className="bg-gray-950 text-white py-16 px-6">
+                <div className="max-w-7xl mx-auto">
+                    <div className="grid md:grid-cols-4 gap-12 mb-12">
+                        {/* Brand */}
+                        <div className="md:col-span-2">
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-sky-500 flex items-center justify-center">
+                                    <Heart className="w-5 h-5 text-white" />
                                 </div>
-                                <h3 className="text-xl font-bold text-charcoal-800 mb-3">{item.title}</h3>
-                                <p className="text-charcoal-500">{item.desc}</p>
-                            </motion.div>
-                        ))}
-                    </motion.div>
-                </div>
-            </section>
+                                <span className="text-xl font-bold">Steven Whyte</span>
+                            </div>
+                            <p className="text-gray-400 max-w-md leading-relaxed">
+                                Breaking the silence around men's mental health. Author, advocate, and founder of the Unspoken movement.
+                            </p>
+                        </div>
 
-            {/* Story Cards Section */}
-            <section className="py-24 px-6 bg-mint-50">
-                <div className="max-w-6xl mx-auto">
-                    <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        variants={stagger}
-                        className="text-center mb-16"
-                    >
-                        <motion.span variants={fadeInUp} className="section-label">My Travel Stories</motion.span>
-                        <motion.h2 variants={fadeInUp} className="text-4xl md:text-5xl font-bold text-charcoal-800">
-                            Places That Shaped Me
-                        </motion.h2>
-                    </motion.div>
+                        {/* Links */}
+                        <div>
+                            <h4 className="font-semibold mb-4 text-gray-100">Navigation</h4>
+                            <ul className="space-y-3">
+                                {["Story", "Archive", "Contact", "Media Kit"].map((link) => (
+                                    <li key={link}>
+                                        <Link href={`/${link.toLowerCase().replace(" ", "-")}`} className="text-gray-400 hover:text-emerald-400 transition-colors">
+                                            {link}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
 
-                    <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        variants={stagger}
-                        className="grid md:grid-cols-3 gap-8"
-                    >
-                        {[
-                            { location: "United Kingdom", date: "2023", color: "from-emerald-400 to-emerald-600" },
-                            { location: "France", date: "2022", color: "from-sky-400 to-sky-600" },
-                            { location: "Germany", date: "2021", color: "from-amber-400 to-amber-600" },
-                        ].map((story, i) => (
-                            <motion.div
-                                key={i}
-                                variants={fadeInUp}
-                                className="group cursor-pointer"
-                            >
-                                <div className={`h-64 rounded-4xl bg-gradient-to-br ${story.color} mb-4 relative overflow-hidden`}>
-                                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
-                                    <span className="absolute top-4 left-4 bg-white/90 text-charcoal-700 text-xs font-medium px-3 py-1 rounded-full">
-                                        {story.date}
-                                    </span>
-                                </div>
-                                <h3 className="text-xl font-bold text-charcoal-800">{story.location}</h3>
-                            </motion.div>
-                        ))}
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* Testimonials/Voices Section */}
-            <section className="py-24 px-6 bg-white">
-                <div className="max-w-6xl mx-auto">
-                    <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        variants={stagger}
-                        className="text-center mb-16"
-                    >
-                        <motion.span variants={fadeInUp} className="section-label inline-flex items-center gap-2">
-                            <Heart className="w-3 h-3 text-emerald-500" />
-                            Voices of Support
-                        </motion.span>
-                        <motion.h2 variants={fadeInUp} className="text-4xl md:text-5xl font-bold text-charcoal-800">
-                            What People Are Saying
-                        </motion.h2>
-                    </motion.div>
-
-                    <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        variants={stagger}
-                        className="grid md:grid-cols-3 gap-8"
-                    >
-                        {[
-                            { quote: "Steven's story touched my heart. His honesty about mental health struggles is so important.", author: "Sarah M." },
-                            { quote: "Finding this community has been life-changing. You're not alone in your journey.", author: "James T." },
-                            { quote: "The power of sharing our stories cannot be underestimated. Thank you for your courage.", author: "Emma L." },
-                        ].map((testimonial, i) => (
-                            <motion.div
-                                key={i}
-                                variants={fadeInUp}
-                                className="card"
-                            >
-                                <MessageCircle className="w-8 h-8 text-emerald-200 mb-4" />
-                                <p className="text-charcoal-600 italic mb-6 leading-relaxed">"{testimonial.quote}"</p>
-                                <div className="flex items-center gap-2">
-                                    <Heart className="w-4 h-4 text-emerald-500" />
-                                    <span className="text-sm font-medium text-charcoal-700">{testimonial.author}</span>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* Stats Section */}
-            <section className="py-24 px-6 bg-emerald-700 text-white">
-                <div className="max-w-6xl mx-auto">
-                    <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        variants={stagger}
-                        className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
-                    >
-                        {[
-                            { icon: Users, value: "10K+", label: "Lives Touched" },
-                            { icon: BookOpen, value: "126", label: "Stories Shared" },
-                            { icon: Heart, value: "50+", label: "Communities" },
-                            { icon: TrendingUp, value: "3", label: "Countries" },
-                        ].map((stat, i) => (
-                            <motion.div key={i} variants={fadeInUp}>
-                                <stat.icon className="w-8 h-8 mx-auto mb-3 text-emerald-200" />
-                                <div className="text-4xl font-bold mb-1">{stat.value}</div>
-                                <div className="text-emerald-200 text-sm">{stat.label}</div>
-                            </motion.div>
-                        ))}
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* Footer */}
-            <footer className="py-16 px-6 bg-charcoal-800 text-white">
-                <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-                    <div className="flex items-center gap-2">
-                        <Heart className="w-5 h-5 text-emerald-400" />
-                        <span className="font-bold">Steven Whyte</span>
+                        {/* Social */}
+                        <div>
+                            <h4 className="font-semibold mb-4 text-gray-100">Connect</h4>
+                            <ul className="space-y-3">
+                                {[
+                                    { name: "Instagram", url: "https://instagram.com/unspoken1979" },
+                                    { name: "TikTok", url: "https://tiktok.com/@stevewhyte171" },
+                                    { name: "LinkedIn", url: "#" },
+                                ].map((social) => (
+                                    <li key={social.name}>
+                                        <a href={social.url} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-emerald-400 transition-colors">
+                                            {social.name}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
-                    <div className="flex gap-8 text-sm text-charcoal-400">
-                        <Link href="/story" className="hover:text-white transition-colors">Story</Link>
-                        <Link href="/archive" className="hover:text-white transition-colors">Archive</Link>
-                        <Link href="/contact" className="hover:text-white transition-colors">Contact</Link>
+
+                    {/* Bottom */}
+                    <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
+                        <p className="text-gray-500 text-sm">
+                            © {new Date().getFullYear()} Steven Whyte. All rights reserved.
+                        </p>
+                        <div className="flex gap-6 text-sm text-gray-500">
+                            <Link href="/privacy" className="hover:text-gray-300 transition-colors">Privacy Policy</Link>
+                            <Link href="/terms" className="hover:text-gray-300 transition-colors">Terms of Service</Link>
+                        </div>
                     </div>
-                    <p className="text-sm text-charcoal-500">© 2025 Steven Whyte. All rights reserved.</p>
                 </div>
             </footer>
         </main>
