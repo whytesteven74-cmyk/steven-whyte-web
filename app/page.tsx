@@ -6,7 +6,18 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown, Heart, Footprints, Sunrise, ArrowRight, Mail, MapPin } from "lucide-react";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { SocialFeed } from "@/components/social/SocialFeed";
+import { TiltCard } from "@/components/ui/TiltCard";
 import DynamicHeroScene from "@/components/3d/DynamicHeroScene";
+
+// Poetic "Whispers" Data
+const whispers = [
+    "Nature is waiting...",
+    "The path is yours.",
+    "Breathe.",
+    "Healing is not linear.",
+    "Connection returns us home.",
+    "Hope is real."
+];
 
 export default function Home() {
     const containerRef = useRef(null);
@@ -28,12 +39,36 @@ export default function Home() {
     return (
         <main ref={containerRef} className="min-h-screen bg-stone-50 overflow-x-hidden">
 
+            {/* ===== FLOATING WHISPERS LAYER ===== */}
+            <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.03] select-none">
+                {whispers.map((text, i) => (
+                    <motion.div
+                        key={i}
+                        className="absolute font-serif text-6xl whitespace-nowrap"
+                        style={{
+                            top: `${15 + i * 15}%`,
+                            left: i % 2 === 0 ? "-5%" : "auto",
+                            right: i % 2 !== 0 ? "-5%" : "auto",
+                        }}
+                        animate={{
+                            x: i % 2 === 0 ? [0, 50, 0] : [0, -50, 0],
+                        }}
+                        transition={{
+                            duration: 20 + i * 5,
+                            repeat: Infinity,
+                            ease: "linear",
+                        }}
+                    >
+                        {text}
+                    </motion.div>
+                ))}
+            </div>
+
             {/* ===== CINEMATIC HERO ===== */}
-            <div className="relative h-screen flex items-center justify-center bg-white overflow-hidden">
-                {/* Background Gradient - "The Northern Lights" feel */}
+            <div className="relative h-screen flex items-center justify-center bg-transparent overflow-hidden">
                 <motion.div
                     style={{ scale: heroScale, opacity: heroOpacity }}
-                    className="absolute inset-0 z-0"
+                    className="absolute inset-0 z-0 bg-white"
                 >
                     {/* Dynamic 3D Scene for Performance Optimization */}
                     <DynamicHeroScene />
@@ -49,221 +84,165 @@ export default function Home() {
                     className="relative z-10 text-center px-6 max-w-7xl mx-auto"
                 >
                     <motion.div
-                        initial={{ opacity: 0, y: 40 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }} // Native iOS ease
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
                         className="flex flex-col items-center gap-8"
                     >
-                        {/* Label Pill */}
-                        <span className="px-4 py-1.5 rounded-full border border-stone-200 bg-white/50 backdrop-blur-md text-xs font-semibold tracking-widest uppercase text-stone-500 shadow-sm">
-                            The Journey Home
+                        <span className="px-4 py-1.5 rounded-full border border-emerald-200 bg-white/50 backdrop-blur-md text-xs font-semibold tracking-widest uppercase text-emerald-800 shadow-sm">
+                            Whispers From the Path
                         </span>
 
-                        <h1 className="text-5xl md:text-7xl lg:text-[6rem] leading-[1.0] tracking-tight font-serif text-emerald-950 text-gradient-premium">
-                            You Are Not Alone <br />
-                            <i className="font-serif font-light text-emerald-700/80">in Your Healing.</i>
+                        <h1 className="text-5xl md:text-7xl lg:text-[7rem] leading-[1.0] tracking-tight font-serif text-gradient-premium">
+                            A Sanctuary <br />
+                            <i className="font-serif font-light opacity-80">For The Soul.</i>
                         </h1>
 
                         <p className="text-xl md:text-2xl text-stone-600 max-w-2xl mx-auto font-light leading-relaxed">
-                            A sanctuary for stories, connection, and gentle recovery. <br className="hidden md:block" />
-                            Nature is waiting. Hope is real.
+                            Discover the silence in movement. <br className="hidden md:block" />
+                            Healing is not a destination, it's a way of walking.
                         </p>
 
-                        <div className="flex flex-col md:flex-row gap-4 items-center mt-4">
-                            <MagneticButton onClick={scrollToContent} className="btn-premium-primary group">
+                        <div className="flex flex-col md:flex-row gap-6 items-center mt-6">
+                            <MagneticButton onClick={scrollToContent} className="btn-premium-primary group shadow-2xl">
                                 <span>Begin the Journey</span>
                                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                             </MagneticButton>
 
                             <Link href="/story">
-                                <MagneticButton className="btn-premium-outline">
+                                <MagneticButton className="btn-premium-outline bg-white/20 backdrop-blur-sm">
                                     Read Stories
                                 </MagneticButton>
                             </Link>
                         </div>
                     </motion.div>
                 </motion.div>
-
-                {/* Mouse/Scroll hint */}
-                <motion.div
-                    className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10"
-                    animate={{ y: [0, 8, 0] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                >
-                    <div className="w-[1px] h-16 bg-gradient-to-b from-stone-300 to-transparent" />
-                </motion.div>
             </div>
 
             {/* ===== BENTO GRID LAYOUT ===== */}
-            <section id="story" className="py-32 px-4 md:px-6 relative bg-noise">
+            <section id="story" className="py-32 px-4 md:px-6 relative bg-noise z-10">
                 <div className="max-w-7xl mx-auto">
-
-                    {/* Editorial Header */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.8 }}
-                        className="mb-20 grid md:grid-cols-2 gap-10 items-end"
+                        className="mb-24 grid md:grid-cols-2 gap-16 items-end"
                     >
-                        <h2 className="text-4xl md:text-6xl font-serif text-emerald-950">
-                            A Path Forged <br />
-                            <span className="text-emerald-600 italic">Through Nature.</span>
+                        <h2 className="text-5xl md:text-7xl font-serif text-emerald-950 leading-tight">
+                            The Earth <br />
+                            <span className="text-emerald-700 italic">Heals Us.</span>
                         </h2>
-                        <p className="text-xl text-stone-600 font-light leading-relaxed pb-2">
-                            I know the weight of feeling stuck. My journey began in pain but found its rhythm in the quiet of the woods and the stories of strangers.
-                        </p>
+                        <div className="space-y-6">
+                            <p className="text-xl text-stone-700 font-light leading-relaxed border-l-4 border-emerald-100 pl-8">
+                                "The woods don't judge. The waves don't ask for a reason. They simply hold space for the whispers we are finally ready to speak."
+                            </p>
+                        </div>
                     </motion.div>
 
-                    {/* The Bento Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[300px]">
-
-                        {/* 1. Feature Image (Large Square) */}
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6 }}
-                            className="md:col-span-2 md:row-span-2 relative rounded-[2.5rem] overflow-hidden group shadow-xl"
-                        >
-                            <img
-                                src="https://images.unsplash.com/photo-1728125771015-68c44a4819cc?w=1200"
-                                alt="Forest path"
-                                className="object-cover w-full h-full transition-transform duration-[1s] group-hover:scale-105"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent p-10 flex flex-col justify-end">
-                                <span className="text-white/80 uppercase tracking-widest text-sm font-semibold mb-2">My Story</span>
-                                <h3 className="text-white text-4xl font-serif italic">Walking Back to Life</h3>
+                        {/* 1. Feature Image */}
+                        <TiltCard className="md:col-span-2 md:row-span-2">
+                            <div className="w-full h-full relative rounded-[2.5rem] overflow-hidden group shadow-2xl bg-emerald-950">
+                                <img
+                                    src="https://images.unsplash.com/photo-1728125771015-68c44a4819cc?w=1200"
+                                    alt="Forest path"
+                                    className="object-cover w-full h-full transition-transform duration-[2s] group-hover:scale-110 opacity-70"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/80 to-transparent p-12 flex flex-col justify-end">
+                                    <span className="text-emerald-400 uppercase tracking-widest text-sm font-semibold mb-3">Narrative</span>
+                                    <h3 className="text-white text-4xl md:text-5xl font-serif italic">Walking Back <br />To Life.</h3>
+                                </div>
                             </div>
-                        </motion.div>
+                        </TiltCard>
 
                         {/* 2. Gentle Healing Card */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.1 }}
-                            className="card-premium md:col-span-1 p-8 flex flex-col justify-between group hover:bg-emerald-50/50"
-                        >
-                            <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center">
-                                <Heart className="w-6 h-6 text-emerald-600" />
+                        <TiltCard className="md:col-span-1">
+                            <div className="card-premium h-full p-10 flex flex-col justify-between group hover:bg-emerald-50">
+                                <div className="w-14 h-14 rounded-full bg-emerald-100 flex items-center justify-center transition-transform group-hover:rotate-12">
+                                    <Heart className="w-7 h-7 text-emerald-600" />
+                                </div>
+                                <div>
+                                    <h3 className="text-2xl font-serif mb-3 text-emerald-950">Gentle Healing</h3>
+                                    <p className="text-stone-600 font-light italic">Soft movements for hard days.</p>
+                                </div>
                             </div>
-                            <div>
-                                <h3 className="text-2xl font-serif mb-2 text-emerald-950">Gentle Healing</h3>
-                                <p className="text-stone-600 text-sm">Peace through movement and self-compassion.</p>
-                            </div>
-                        </motion.div>
+                        </TiltCard>
 
                         {/* 3. Community (Dark Card) */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.2 }}
-                            className="card-premium-dark md:col-span-1 md:row-span-2 p-10 flex flex-col justify-between relative overflow-hidden"
-                        >
-                            {/* Abstract decoration */}
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/20 rounded-full blur-3xl" />
+                        <TiltCard className="md:col-span-1 md:row-span-2">
+                            <div className="card-premium-dark h-full p-12 flex flex-col justify-between relative overflow-hidden bg-emerald-950">
+                                <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-500/10 rounded-full blur-[80px]" />
 
-                            <div>
-                                <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-6">
-                                    <Footprints className="w-6 h-6 text-emerald-300" />
+                                <div>
+                                    <div className="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center mb-8">
+                                        <Footprints className="w-7 h-7 text-emerald-300" />
+                                    </div>
+                                    <h3 className="text-4xl font-serif text-white mb-6 leading-tight">Shared <br />Path.</h3>
+                                    <p className="text-emerald-100/60 font-light leading-relaxed text-lg">
+                                        No one walks alone. Our stories are the maps for those behind us.
+                                    </p>
                                 </div>
-                                <h3 className="text-3xl font-serif text-white mb-4">You Are <br />Connected.</h3>
-                                <p className="text-emerald-100/80 leading-relaxed">
-                                    "We heal in community. Every story shared lightens the load for someone else."
-                                </p>
-                            </div>
 
-                            <Link href="/contact" className="mt-8 flex items-center gap-2 text-white/90 hover:text-white group">
-                                <span>Join Us</span>
-                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                            </Link>
-                        </motion.div>
+                                <Link href="/contact" className="mt-8 flex items-center gap-3 text-emerald-400 hover:text-white transition-colors group text-lg">
+                                    <span>Connect</span>
+                                    <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                                </Link>
+                            </div>
+                        </TiltCard>
 
                         {/* 4. New Beginnings */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.3 }}
-                            className="card-premium md:col-span-1 p-8 flex flex-col justify-between"
-                        >
-                            <div className="w-12 h-12 rounded-full bg-teal-100 flex items-center justify-center">
-                                <Sunrise className="w-6 h-6 text-teal-600" />
+                        <TiltCard className="md:col-span-1">
+                            <div className="card-premium h-full p-10 flex flex-col justify-between hover:border-teal-200">
+                                <div className="w-14 h-14 rounded-full bg-teal-100 flex items-center justify-center group">
+                                    <Sunrise className="w-7 h-7 text-teal-600 group-hover:scale-110 transition-transform" />
+                                </div>
+                                <div>
+                                    <h3 className="text-2xl font-serif mb-3 text-emerald-950">New Light</h3>
+                                    <p className="text-stone-600 font-light italic">Every sunrise is an invitation.</p>
+                                </div>
                             </div>
-                            <div>
-                                <h3 className="text-2xl font-serif mb-2 text-emerald-950">Fresh Starts</h3>
-                                <p className="text-stone-600 text-sm">Every sunrise is a chance to begin again.</p>
-                            </div>
-                        </motion.div>
+                        </TiltCard>
 
-                        {/* 5. Quote/Text Block */}
+                        {/* 5. Quote Block */}
                         <motion.div
-                            className="md:col-span-2 bg-stone-100 rounded-[2.5rem] p-10 flex items-center justify-center text-center"
-                            initial={{ opacity: 0, scale: 0.95 }}
+                            className="md:col-span-2 bg-emerald-950 rounded-[3rem] p-16 flex items-center justify-center text-center relative overflow-hidden"
+                            initial={{ opacity: 0, scale: 0.98 }}
                             whileInView={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.5, delay: 0.4 }}
                         >
-                            <p className="text-2xl md:text-3xl font-serif text-stone-500 leading-snug">
-                                "Trauma interrupted my life, but <span className="text-emerald-800">nature returned it to me.</span>"
+                            <div className="absolute inset-0 bg-noise opacity-20" />
+                            <p className="text-3xl md:text-4xl font-serif text-emerald-100/80 leading-snug relative z-10 italic">
+                                "The whispers of the path <br /> are finally <span className="text-white font-medium not-italic">shouting for joy.</span>"
                             </p>
                         </motion.div>
-
                     </div>
                 </div>
             </section>
 
             {/* ===== SOCIAL FEED (Full Width) ===== */}
-            <div className="relative z-10">
-                <SocialFeed />
-            </div>
-
+            <SocialFeed />
 
             {/* ===== MINIMALIST CTA ===== */}
-            <section className="py-32 px-4 bg-white">
-                <div className="max-w-4xl mx-auto text-center">
+            <section className="py-40 px-4 bg-white relative">
+                <div className="max-w-4xl mx-auto text-center relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
                     >
-                        <h2 className="text-5xl md:text-7xl font-serif text-emerald-950 mb-8">
-                            Ready to Walk?
+                        <h2 className="text-6xl md:text-[8rem] font-serif text-emerald-950 mb-12 opacity-[0.15] absolute inset-0 flex items-center justify-center pointer-events-none tracking-tighter">
+                            WALK WITH US
                         </h2>
-                        <div className="flex justify-center gap-6">
-                            <Link href="/story" className="btn-premium-primary text-lg px-8 py-4">
-                                Read My Story
+                        <div className="relative z-10 flex flex-col items-center gap-10">
+                            <h3 className="text-4xl md:text-5xl font-serif text-emerald-950">Ready to begin your story?</h3>
+                            <Link href="/story">
+                                <MagneticButton className="btn-premium-primary text-xl px-12 py-5 shadow-2xl">
+                                    Explore The Archive
+                                </MagneticButton>
                             </Link>
                         </div>
                     </motion.div>
                 </div>
             </section>
-
-            {/* ===== FOOTER ===== */}
-            <footer className="bg-stone-50 py-24 px-4 border-t border-stone-200">
-                <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
-                    <div className="md:col-span-2">
-                        <span className="font-serif text-2xl text-emerald-900 block mb-6">Healing Journey.</span>
-                        <p className="text-stone-500 max-w-sm">
-                            A digital space for mental health, nature, and the stories that connect us all.
-                        </p>
-                    </div>
-
-                    <div>
-                        <ul className="space-y-4 text-stone-600">
-                            <li><Link href="/story" className="hover:text-emerald-800 transition-colors">Story</Link></li>
-                            <li><Link href="/archive" className="hover:text-emerald-800 transition-colors">Archive</Link></li>
-                            <li><Link href="/contact" className="hover:text-emerald-800 transition-colors">Contact</Link></li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <p className="text-stone-400 text-sm">
-                            © {new Date().getFullYear()} Steven Whyte.<br />
-                            Europe.
-                        </p>
-                    </div>
-                </div>
-            </footer>
         </main>
     );
 }

@@ -9,10 +9,12 @@ const playfair = Playfair_Display({
     variable: "--font-playfair",
     display: "swap",
 });
+
 import { NavBar } from "@/components/NavBar";
 import SmoothScroll from "@/components/SmoothScroll";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
-import { CursorGlow } from "@/components/ui/Interactions";
+import { AuraCursor } from "@/components/ui/AuraCursor";
+import { Preloader } from "@/components/ui/Preloader";
 
 export const metadata: Metadata = {
     title: "Steven Whyte | Wellness & Unspoken Truths",
@@ -26,9 +28,10 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable} ${playfair.variable} scroll-smooth`}>
-            <body className="bg-mint text-charcoal min-h-screen antialiased font-sans overflow-x-hidden selection:bg-emerald-200 selection:text-emerald-900 transition-colors duration-500">
+            <body className="bg-stone-50 text-emerald-950 min-h-screen antialiased font-sans overflow-x-hidden selection:bg-emerald-900 selection:text-emerald-50 transition-colors duration-500">
+                <Preloader />
                 <SmoothScroll>
-                    <CursorGlow />
+                    <AuraCursor />
                     <NavBar />
                     {children}
                     <ThemeToggle />
