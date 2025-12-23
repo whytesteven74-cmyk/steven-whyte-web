@@ -18,11 +18,28 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Add noise texture to body using SVG data URI for better performance/quality than raw CSS gradients */
 body {
   background-color: white;
   color: rgb(68 64 60);
   /* stone-600 */
   font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+/* Noise overlay utility */
+.bg-noise {
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-noise::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.4;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
 ::selection {
@@ -35,7 +52,7 @@ body {
 /* ============================================
    TYPOGRAPHY
    ============================================ */
-
+/* ... (standard typography remains the same) ... */
 h1,
 h2,
 h3,
@@ -71,37 +88,74 @@ a {
 }
 
 /* ============================================
-   GLASSMORPHIC CARDS
+   PREMIUM GLASSMORPHISM
+   Refined with multiple shadows and depth
    ============================================ */
 
-.card-glass {
-  background-color: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+.card-glass,
+.card-glass-green,
+.card-glass-teal {
+  position: relative;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-radius: 1.5rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  border: 2px solid rgb(167 243 208);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Add subtle noise to cards */
+.card-glass::after,
+.card-glass-green::after,
+.card-glass-teal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  z-index: -1;
+  border-radius: inherit;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.card-glass {
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 10px 15px -3px rgba(0, 0, 0, 0.05),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  /* Inner highlight */
+  border: 1px solid rgba(167, 243, 208, 0.5);
   /* emerald-200 */
 }
 
 .card-glass-green {
-  background-color: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-radius: 1.5rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  border: 2px solid rgb(187 247 208);
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 10px 15px -3px rgba(0, 0, 0, 0.05),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(187, 247, 208, 0.5);
   /* green-200 */
 }
 
 .card-glass-teal {
-  background-color: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-radius: 1.5rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  border: 2px solid rgb(153 246 228);
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 10px 15px -3px rgba(0, 0, 0, 0.05),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(153, 246, 228, 0.5);
   /* teal-200 */
+}
+
+/* Hover effects for premium feel */
+.card-glass:hover,
+.card-glass-green:hover,
+.card-glass-teal:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 8px 10px -6px rgba(0, 0, 0, 0.05),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8);
 }
 
 /* ============================================
@@ -109,46 +163,26 @@ a {
    ============================================ */
 
 .bg-hero-sage {
-  background: linear-gradient(to bottom right, rgb(209 250 229), rgb(240 253 244), rgb(240 253 250));
-  /* emerald-100 → green-50 → teal-50 */
+  background: linear-gradient(135deg, rgb(236, 253, 245) 0%, rgb(240, 253, 250) 100%);
+  /* emerald-50 -> teal-50 */
 }
 
 .bg-section-sage {
-  background: linear-gradient(to bottom, rgb(240 253 250), rgb(209 250 229), rgb(220 252 231));
-  /* teal-50 → emerald-100 → green-100 */
+  background: linear-gradient(180deg, rgb(240, 253, 250) 0%, rgb(236, 253, 245) 100%);
 }
 
 .bg-footer-sage {
-  background: linear-gradient(to bottom, rgb(209 250 229), rgb(220 252 231), rgb(204 251 241));
-  /* emerald-100 → green-100 → teal-100 */
+  background: linear-gradient(180deg, rgb(209 250 229) 0%, rgb(220 252 231) 100%);
 }
+
 
 /* ============================================
    ICON CONTAINERS
    ============================================ */
+/* ... (icon styles same with polished shadows) ... */
 
-.icon-circle-emerald {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 5rem;
-  height: 5rem;
-  border-radius: 9999px;
-  background: linear-gradient(to bottom right, rgb(110 231 183), rgb(167 243 208));
-  /* emerald-300 → emerald-200 */
-}
-
-.icon-circle-green {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 5rem;
-  height: 5rem;
-  border-radius: 9999px;
-  background: linear-gradient(to bottom right, rgb(134 239 172), rgb(187 247 208));
-  /* green-300 → green-200 */
-}
-
+.icon-circle-emerald,
+.icon-circle-green,
 .icon-circle-teal {
   display: inline-flex;
   align-items: center;
@@ -156,69 +190,83 @@ a {
   width: 5rem;
   height: 5rem;
   border-radius: 9999px;
-  background: linear-gradient(to bottom right, rgb(94 234 212), rgb(153 246 228));
-  /* teal-300 → teal-200 */
+  box-shadow: inset 0 2px 4px 0 rgba(255, 255, 255, 0.3);
+}
+
+.icon-circle-emerald {
+  background: linear-gradient(135deg, rgb(110 231 183), rgb(52 211 153));
+}
+
+.icon-circle-green {
+  background: linear-gradient(135deg, rgb(134 239 172), rgb(74 222 128));
+}
+
+.icon-circle-teal {
+  background: linear-gradient(135deg, rgb(94 234 212), rgb(45 212 191));
 }
 
 /* ============================================
    BUTTONS
    ============================================ */
+/* ... (button styles refined) ... */
 
 .btn-primary-sage {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem 2rem;
+  padding: 0.875rem 2.5rem;
+  /* Larger touch target */
   font-weight: 500;
+  letter-spacing: 0.025em;
   color: white;
   background: linear-gradient(to right, rgb(16 185 129), rgb(34 197 94));
-  /* emerald-500 → green-500 */
   border-radius: 9999px;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  transition: all 200ms;
+  box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2), 0 2px 4px -1px rgba(16, 185, 129, 0.1);
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-primary-sage:hover {
-  background: linear-gradient(to right, rgb(5 150 105), rgb(22 163 74));
-  /* emerald-600 → green-600 */
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.4), 0 4px 6px -2px rgba(16, 185, 129, 0.2);
 }
 
 .btn-outline-sage {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem 2rem;
+  padding: 0.875rem 2.5rem;
   font-weight: 500;
   color: rgb(41 37 36);
-  /* stone-800 */
   background: transparent;
-  border: 2px solid rgb(16 185 129);
-  /* emerald-500 */
+  border: 1px solid rgb(209 213 219);
+  /* lighter border initially */
   border-radius: 9999px;
-  transition: all 200ms;
+  transition: all 300ms ease;
 }
 
 .btn-outline-sage:hover {
+  border-color: rgb(16 185 129);
   background-color: rgb(236 253 245);
-  /* emerald-50 */
+  transform: translateY(-2px);
 }
 
 /* ============================================
    NAVIGATION
    ============================================ */
+/* ... (nav styles) ... */
 
 .nav-scrolled {
-  background-color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  /* Stronger blur */
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .nav-transparent {
-  background: linear-gradient(to bottom, rgba(220, 252, 231, 0.8), transparent);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background: transparent;
+  backdrop-filter: blur(0px);
+  /* Transition requires starting value */
 }
 
 /* ============================================
@@ -228,19 +276,20 @@ a {
 .blur-circle {
   position: absolute;
   border-radius: 9999px;
-  filter: blur(48px);
+  filter: blur(64px);
+  /* Softer blur */
+  mix-blend-mode: multiply;
+  /* Better blending */
+  opacity: 0.6;
 }
 
-/* ============================================
-   ARTICLE / MDX STYLES
-   ============================================ */
-
+/* ... (rest of typography/mdx) ... */
 article {
   max-width: 48rem;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
 }
 
+/* (keeping existing article styles mostly as is) */
 article h1 {
   font-size: 2.25rem;
   color: rgb(41 37 36);
@@ -278,27 +327,20 @@ article a:hover {
   color: rgb(4 120 87);
 }
 
-/* ============================================
-   SCROLLBAR
-   ============================================ */
-
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: rgb(240 253 244);
-  /* green-50 */
+  background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgb(167 243 208);
-  /* emerald-200 */
+  background-color: rgb(209 213 219);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: rgb(110 231 183);
-  /* emerald-300 */
+  background-color: rgb(156 163 175);
 }

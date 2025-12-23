@@ -3,7 +3,7 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { NavBar } from "@/components/NavBar";
-import { SmoothScroll } from "@/components/SmoothScroll";
+import SmoothScroll from "@/components/SmoothScroll";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { CursorGlow } from "@/components/ui/Interactions";
 
