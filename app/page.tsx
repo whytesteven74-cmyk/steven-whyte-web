@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown, Heart, Footprints, Sunrise, ArrowRight, Mail, MapPin } from "lucide-react";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { SocialFeed } from "@/components/social/SocialFeed";
 
 // ============================================
 // PREMIUM SAGE GREEN HOMEPAGE
@@ -201,6 +202,9 @@ export default function Home() {
                     </div>
                 </div>
             </section>
+
+            {/* ===== SOCIAL FEED SECTION ===== */}
+            <SocialFeed />
 
             {/* ===== CTA SECTION ===== */}
             <section className="py-32 px-4 bg-white relative">
